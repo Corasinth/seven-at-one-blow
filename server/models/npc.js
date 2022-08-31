@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const npcSchema = new Schema ({ 
+    default: {
+        type: Boolean,
+        required: true
+    },
     name: {
         type: String,
         required:true
