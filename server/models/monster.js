@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const monsterAttributes = new Schema({
+const monsterSchema = new Schema({
 default: {
     type: Boolean,
     required: true
@@ -16,6 +16,6 @@ health: {
 }
 });
 
-const monsters = model('Monsters', monsterAttributes); 
+const Monster = model('Monster', monsterSchema); 
 
-module.export = monsters;
+module.exports = Monster;

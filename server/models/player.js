@@ -35,4 +35,4 @@ userProfileSchema.pre('save', async function (next) {
 
 const player = model('Player', userProfile);
 
-module.export = player;
+module.exports = player;
