@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const userProfile = new Schema({
+const userProfileSchema = new Schema({
 default: {
     type: Boolean,
     required: true
@@ -25,17 +25,13 @@ playerSave: playerSaveSchema
 
 
 // hash password
-userProfile.pre('save', async function (next) {
+userProfileSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
     next()
 });
-
-
-
-
 
 const player = model('Player', userProfile);
 
