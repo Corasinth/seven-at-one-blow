@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const monsterAttributes = new Schema({
+default: {
+    type: Boolean,
+    required: true
+},
 name: {
     type: String,
 },

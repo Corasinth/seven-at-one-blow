@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const userProfile = new Schema({
+default: {
+    type: Boolean,
+    required: true
+},
 username: {
     type: String,
     required: true,
