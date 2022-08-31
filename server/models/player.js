@@ -14,7 +14,8 @@ password: {
 name: {
     type: String,
     trim: true,
-}
+},
+playerSave: playerSaveSchema
 });
 
 
