@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const userProfileSchema = new Schema({
+const playerSchema = new Schema({
     default: {
         type: Boolean,
         required: true
@@ -27,7 +27,7 @@ const userProfileSchema = new Schema({
 
 
 // hash password
-userProfileSchema.pre('save', async function (next) {
+playerSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
@@ -37,26 +37,21 @@ userProfileSchema.pre('save', async function (next) {
 
 //Use item method
 playerSchema.methods.use = async function (item, optionalItemTarget) {
-    switch (item) {
-        case 'SomeItem':
-            Placeholder.use(optionalItemTarget)
-            break;
+    switch (item.toLowerCase()) {
+        case 'needle':
+            return (Placeholder.use(optionalItemTarget))
 
         case 'SomeItem':
-            Placeholder.use(optionalItemTarget)
-            break;
+            return (Placeholder.use(optionalItemTarget))
 
         case 'SomeItem':
-            Placeholder.use(optionalItemTarget)
-            break;
+            return (Placeholder.use(optionalItemTarget))
 
         case 'SomeItem':
-            Placeholder.use(optionalItemTarget)
-            break;
+            return (Placeholder.use(optionalItemTarget))
 
         case 'SomeItem':
-            Placeholder.use(optionalItemTarget)
-            break;
+            return (Placeholder.use(optionalItemTarget))
 
         default:
             `That can't help me here` 
@@ -64,6 +59,6 @@ playerSchema.methods.use = async function (item, optionalItemTarget) {
     }
 };
 
-const player = model('Player', userProfile);
+const Player = model('Player', playerSchema);
 
-module.exports = player;
+module.exports = Player;

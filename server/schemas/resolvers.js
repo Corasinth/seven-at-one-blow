@@ -26,8 +26,8 @@ const resolvers = {
         },
 
         login: async (parent, {username, password}) => {
-            const username = await Player.findOne({username});
-            if(!username) {
+            const userData = await Player.findOne({username});
+            if(!userData) {
                 throw new AuthenticationError('Incorrect Username');
             }
 
