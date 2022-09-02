@@ -15,6 +15,14 @@ const itemSchema = new Schema({
     }
 });
 
+itemSchema.methods.useItem = async function (optionalItemTarget) {
+    //Check story object for current progression, item fails to be used if we aren't in the right area
+    
+    //Check that the optionalItemTarget is correct for this command  
+
+    //Render some text 
+};
+
 const Item = model('Item', itemSchema);
 
 module.exports = Item;

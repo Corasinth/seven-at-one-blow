@@ -38,8 +38,6 @@ const storySchema = new Schema({
     },
 });
 
-
-
 const Story = model('Story', storySchema);
 
 module.exports = Story;

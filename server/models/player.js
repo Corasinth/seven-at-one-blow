@@ -2,25 +2,25 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userProfileSchema = new Schema({
-default: {
-    type: Boolean,
-    required: true
-},
-username: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-},
-password: {
-    type: String,
-    trim: true,
-},
-name: {
-    type: String,
-    trim: true,
-},
-playerSave: playerSaveSchema
+    default: {
+        type: Boolean,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+    },
+    password: {
+        type: String,
+        trim: true,
+    },
+    name: {
+        type: String,
+        trim: true,
+    },
+    playerSave: playerSaveSchema
 });
 
 
@@ -32,6 +32,35 @@ userProfileSchema.pre('save', async function (next) {
     }
     next()
 });
+
+//Use item method
+playerSchema.methods.use = async function (item, optionalItemTarget) {
+    switch (item) {
+        case 'SomeItem':
+            Placeholder.use(optionalItemTarget)
+            break;
+
+        case 'SomeItem':
+            Placeholder.use(optionalItemTarget)
+            break;
+
+        case 'SomeItem':
+            Placeholder.use(optionalItemTarget)
+            break;
+
+        case 'SomeItem':
+            Placeholder.use(optionalItemTarget)
+            break;
+
+        case 'SomeItem':
+            Placeholder.use(optionalItemTarget)
+            break;
+
+        default:
+            `That can't help me here` 
+            break;
+    }
+};
 
 const player = model('Player', userProfile);
 
