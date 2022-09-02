@@ -4,7 +4,7 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        me: async (parent, args, context) => {
+        loadSave: async (parent, args, context) => {
             if(context.user) {
                 const playerData = await Player.findOne({})
                 .select('-__v -password')
