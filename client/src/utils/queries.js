@@ -6,7 +6,8 @@ export const PLAYER = gql`
     username
     password
     name
-    playerSave
+    strength
+    health
   }
 `;
 
@@ -24,8 +25,15 @@ export const SAVE = gql`
 
 export const ITEMS = gql`
   query items {
-    default
     name
     interactions
+  }
+`;
+
+export const MONSTERS = `gql 
+  query monsters {
+    name
+    strength
+    health
   }
 `;
