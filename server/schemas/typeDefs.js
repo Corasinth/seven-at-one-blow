@@ -6,7 +6,7 @@ const typeDefs = gql`
         username: String
         name: String
         password: String
-        playerSave: Schema.Types.ObjectId
+        playerSave: ID 
     }
 
     type Auth {
@@ -15,7 +15,7 @@ const typeDefs = gql`
     }
 
     type Query {
-        getPlayer: Player
+        loadSave: Player
     }
 
     type Mutation {

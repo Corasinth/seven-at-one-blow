@@ -7,7 +7,7 @@ const resolvers = {
         loadSave: async (parent, args, context) => {
             if(context.user) {
                 const playerData = await Player.findOne({})
-                .select('-__v -password')
+                // .select('-__v -password')
                 // .populate('')?
                 return playerData;
             }
@@ -18,12 +18,12 @@ const resolvers = {
     },
 
     Mutation: {
-        addUser: async (parent, args) => {
-            const user = await Player.create(args);
-            const token = signToken(user)
+        // addUser: async (parent, args) => {
+        //     const user = await Player.create(args);
+        //     const token = signToken(user)
 
-            return {token, user};
-        },
+        //     return {token, user};
+        // },
 
         login: async (parent, {username, password}) => {
             const userData = await Player.findOne({username});
@@ -40,7 +40,6 @@ const resolvers = {
             const token = signToken(user);
             return {token, user};
         }
-
     }
 };
 
