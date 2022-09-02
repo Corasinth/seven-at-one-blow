@@ -20,7 +20,9 @@ const userProfileSchema = new Schema({
         type: String,
         trim: true,
     },
-    playerSave: playerSaveSchema
+    playerSave: {
+        type: Schema.Types.ObjectId,
+    }
 });
 
 
