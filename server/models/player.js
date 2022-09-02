@@ -2,10 +2,6 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const playerSchema = new Schema({
-    default: {
-        type: Boolean,
-        required: true
-    },
     username: {
         type: String,
         required: true,
