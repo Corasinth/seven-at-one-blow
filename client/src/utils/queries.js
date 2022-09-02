@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const PLAYER = gql`
-  query newPlayer {
+  query loadPlayer {
     _id
     username
     password
@@ -24,16 +24,26 @@ export const SAVE = gql`
 `;
 
 export const ITEMS = gql`
-  query items {
+  query loadItems {
+    _id
     name
     interactions
   }
 `;
 
 export const MONSTERS = `gql 
-  query monsters {
+  query loadMonsters {
+    _id
     name
     strength
     health
+  }
+`;
+
+export const NPC = `gqp 
+  query loadNPC {
+    _id
+    name
+    dialouge
   }
 `;
