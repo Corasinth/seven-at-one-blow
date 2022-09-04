@@ -1,6 +1,61 @@
 [
     {
-        "name": "Broadsword"
-
+        "name":"jam",
+        "interactions":[],
+        "dialogueArray":[
+            "You buy a jar of jam and spread it on some bread. You deserve a break. You see the cloth that still needs to be cut, the seams that still need to be sewn. You know that this is not the time to indulge.  (Type the command USE NEEDLE ON CLOTH to progress. This ends the tutorial.)"
+        ]
+    },
+    {
+        "name":"needle",
+        "interactions":["cloth"],
+        "dialogueArray":[
+            "After you’ve finished your work, you return to the jam only to find no fewer than seven flies feasting on the sweet jam. You swell with rage, justified, vengeful rage, against the flies."
+        ]
+    },
+    {
+        "name":"cloth",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"cheese",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"bird",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"belt",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"floor",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"bed",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"sword",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"bones",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"rope",
+        "interactions":[],
+        "dialogueArray":[]
     }
 ]
