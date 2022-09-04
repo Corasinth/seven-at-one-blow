@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const LOGIN = gql `
+export const LOGIN = gql`
   query user($username: String!) {
     user(username: $username) {
       _id
@@ -40,7 +40,7 @@ export const ITEMS = gql`
   }
 `;
 
-export const MONSTERS = `gql 
+export const MONSTERS = gql` 
   query loadMonsters {
     _id
     name
@@ -49,7 +49,7 @@ export const MONSTERS = `gql
   }
 `;
 
-export const NPC = `gqp 
+export const NPC = gql` 
   query loadNPC {
     _id
     name
