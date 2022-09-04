@@ -9,13 +9,9 @@ const monsterData = require('./monsters.json');
 db.once('open', async () => {
    await Story.deleteOne({default: true});
    await Item.deleteMany({default: true});
-   await Npc.deleteMany({default: true});
-   await Monster.deleteMany({default: true});
 
    await Story.create(storyData);
    await Item.create(itemData);
-   await Npc.create(npcData);
-   await Monster.create(monsterData);
 
    console.log('Finished Seeding') 
    process.exit(0)
