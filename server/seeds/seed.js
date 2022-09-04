@@ -1,5 +1,5 @@
 const db = require('../config/connection');
-const { Story, Item, Npc, Monster } = require('../models');
+const { Story, Item} = require('../models');
 
 const storyData = require('./story.json');
 const itemData = require('./item.json');

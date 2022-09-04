@@ -1,31 +1,29 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const userProfileSchema = new Schema({
-default: {
-    type: Boolean,
-    required: true
-},
-username: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-},
-password: {
-    type: String,
-    trim: true,
-},
-name: {
-    type: String,
-    trim: true,
-},
-playerSave: playerSaveSchema
+const playerSchema = new Schema({
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+    },
+    password: {
+        type: String,
+        trim: true,
+    },
+    name: {
+        type: String,
+        trim: true,
+    },
+    playerSave: {
+        type: Schema.Types.ObjectId,
+    }
 });
 
 
 // hash password
-userProfileSchema.pre('save', async function (next) {
+playerSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
@@ -33,6 +31,30 @@ userProfileSchema.pre('save', async function (next) {
     next()
 });
 
-const player = model('Player', userProfile);
+//Use item method
+playerSchema.methods.use = async function (item, optionalItemTarget) {
+    switch (item.toLowerCase()) {
+        case 'needle':
+            return (Placeholder.use(optionalItemTarget))
 
-module.exports = player;
+        case 'SomeItem':
+            return (Placeholder.use(optionalItemTarget))
+
+        case 'SomeItem':
+            return (Placeholder.use(optionalItemTarget))
+
+        case 'SomeItem':
+            return (Placeholder.use(optionalItemTarget))
+
+        case 'SomeItem':
+            return (Placeholder.use(optionalItemTarget))
+
+        default:
+            `That can't help me here` 
+            break;
+    }
+};
+
+const Player = model('Player', playerSchema);
+
+module.exports = Player;
