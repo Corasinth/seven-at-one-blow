@@ -15,6 +15,9 @@ class TermPackage extends Component {
         }}
       >
         <Terminal
+        // automatically prints any text that is logged to the console
+          watchConsoleLogging
+          
           color='green'
           backgroundColor='black'
           barColor='black'
@@ -38,13 +41,13 @@ class TermPackage extends Component {
           }}
 
           descriptions={{
-            'open-google': 'opens google.com',
-            showmsg: 'shows a message',
+            'console-log': 'Sends a message to the console',
+            showmsg: 'testing',
             alert: 'alert', popup: 'alert'
           }}
 
-          // message that appears when you start the terminal
-          msg='You can write anything here. Example - Hello! My name is Foo and I like Bar.'
+          // message that appears when you start the terminal, can also be called on with the "show" command
+          msg='You can write anything here.'
         />
       </div>
     );
