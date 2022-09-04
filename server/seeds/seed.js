@@ -8,7 +8,7 @@ const monsterData = require('./monsters.json');
 
 db.once('open', async () => {
    await Story.deleteOne({default: true});
-   await Item.deleteMany({default: true});
+   await Item.deleteMany({});
 
    await Story.create(storyData);
    await Item.create(itemData);
