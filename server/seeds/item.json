@@ -1,6 +1,57 @@
 [
     {
-        "name": "Broadsword"
-
+        "name":"jam",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"needle",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"cloth",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"cheese",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"bird",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"belt",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"floor",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"bed",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"sword",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"bones",
+        "interactions":[],
+        "dialogueArray":[]
+    },
+    {
+        "name":"rope",
+        "interactions":[],
+        "dialogueArray":[]
     }
 ]

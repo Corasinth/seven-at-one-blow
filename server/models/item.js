@@ -12,6 +12,9 @@ const itemSchema = new Schema({
     interactions: {
         type: String,
         required: true
+    },
+    text: {
+        type: [String],
     }
 });
 
