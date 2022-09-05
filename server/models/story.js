@@ -6,8 +6,12 @@ const chapterSchema = new Schema({
         required: true,
         default: true
     },
+    chapterNumber: {
+        type: Number,
+        required: true,
+    },
     stageTracker: {
-        type: [Boolean]
+        type: Number 
     }
 })
 

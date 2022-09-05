@@ -5,12 +5,16 @@ const itemSchema = new Schema({
         type: String,
         required: true
     },
+    relevantStages: {
+        type: [Array],
+        required: true
+    },
     stagesRequiredInInventory: {
         type: [Array],
         required: false
     },
-    relevantStages: {
-        type: [Array],
+    returnScript: {
+        type: [Number],
         required: true
     }
 });
@@ -24,7 +28,7 @@ itemSchema.methods.deliverScript = async function (chapter, stage, optionalTarge
     let inventoryChecker = checker (this.requiresInventoryStages);
     let regularChecker = checker (this.relevantStages);
     //If either of the above functions returns true, this method returns true 
-    return (inventoryChecker || regularChecker)
+    return 
 };
 
 function checker (matrixToCheck) {
