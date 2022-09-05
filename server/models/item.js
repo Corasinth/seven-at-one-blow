@@ -9,13 +9,13 @@ const itemSchema = new Schema({
         type: [Array],
         required: true
     },
-    requiredInInventoryStages: {
-        type: [Array],
-        required: false
-    },
     scriptCoordinates: {
         type: [Array],
         required: true
+    },
+    requiredInInventoryStages: {
+        type: [Array],
+        required: false
     },
     inventoryScriptCoordinates: {
         type: [Array],
