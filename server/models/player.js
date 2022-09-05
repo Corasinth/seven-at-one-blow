@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const saveSchema = new Schema({})
+
 const playerSchema = new Schema({
     username: {
         type: String,
@@ -12,8 +14,9 @@ const playerSchema = new Schema({
         type: String,
         trim: true,
     },
-    playerSave: {
-        type: Schema.Types.ObjectId,
+    save: {
+        type: [Number],
+        default: [0,1]
     },
     inventory: {
         type: [String]

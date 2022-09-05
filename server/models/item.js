@@ -5,40 +5,58 @@ const itemSchema = new Schema({
         type: String,
         required: true
     },
-    interactions: {
-        type: [String],
+    relevantStages: {
+        type: [Array],
         required: true
     },
-    text: {
-        type: [String],
+    scriptCoordinates: {
+        type: [Array],
+        required: true
+    },
+    requiredInInventoryStages: {
+        type: [Array],
+        required: false
+    },
+    inventoryScriptCoordinates: {
+        type: [Array],
+        required: false
     }
 });
 
-itemSchema.methods.useItem = async function (optionalItemTarget) {
-    // const targetItem = optionalItemTarget.toLowerCase()
-    //Check story object for current progression, item fails to be used if we aren't in the right area
-    
-    //Check that the optionalItemTarget is correct for this command  
-    // if (this.interactions.includes(targetItem)) {
-    //     return true
-    // } 
-    
-    //Render some text 
+itemSchema.methods.deliverScript = async function (chapter, stage, inInventory, optionalTargetItem) {
+    //Check the relevant stages matrix on the item object for any matches, and set the script coordinates to the returned position if there is a match 
+    let regularPosition = checker (this.relevantStages, chapter, stage, optionalTargetItem);
+    let coordinates = scriptCoordinates[regularPosition];
+
+    //If the incoming chapter and stage turn up no results in the regular stages, we check the inventory stages and overwrite the result
+    if (inInventory && !coordinates) {
+        let inventoryPosition = checker (this.requiredInInventoryStages, chapter, stage, optionalTargetItem);
+        coordinates = inventoryScriptCoordinates[inventoryPosition];
+    }
+    //Returns the coordinates, or if there were no matches simply returns false 
+    return coordinates || false;
 };
 
-itemSchema.methods.takeItem = async function () {
-    //Check story object for current progression, item fails to be taken if we aren't in the right area
-   
-    
-    //Check player inventory, if object already exists you can't take another one 
-
-    //Check that the optionalItemTarget is correct for this command  
-
-    console.log('test success')
-    return 'test success'
-    //Render some text 
-};
-
+function checker (matrixToCheck, chapter, stage, optionalTargetItem) {
+    let position
+    //Checks the incoming current chapter and stage against the item's relevantStages
+    for (let i = 0; i < matrixToCheck.length; i++) {
+        //If a match is found, checks if there's something this item needs to be used on, and if so makes sure that item has also been passed in 
+        if (matrixToCheck[i][0] === chapter && matrixToCheck[i][1] === stage) {
+            if (this.relevantStages[i][2]) {
+                if (this.relevantStages[i][2] === optionalTargetItem) {
+                    position = i;
+                    break;
+                } else {
+                    continue;
+                }
+            }
+            position = i;
+            break;
+        }
+    }
+    return position; 
+}
 const Item = model('Item', itemSchema);
 
 module.exports = Item;
