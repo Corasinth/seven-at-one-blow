@@ -18,7 +18,7 @@ const itemSchema = new Schema({
 itemSchema.methods.deliverScript = async function (chapter, stage) {
     for (let i = 0; i < this.relevantStages.length; i++) {
         if(this.relevantStages[i][0]=== chapter && this.relevantStages[i][1] === stage) {
-            return story.script[chapter][stage]
+            return script.textMatrix[chapter][stage]
         }
     }
     return `${this.name} can't be used here.`
