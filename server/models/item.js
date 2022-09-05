@@ -19,7 +19,7 @@ const itemSchema = new Schema({
     },
     inventoryScriptCoordinates: {
         type: [Array],
-        required: true
+        required: false
     }
 });
 
