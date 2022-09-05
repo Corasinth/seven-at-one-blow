@@ -21,6 +21,10 @@ const storySchema = new Schema({
     royalTrifle: chapterSchema,
     NarrowEscape: chapterSchema,
     RegalResolve: chapterSchema,
+    script: {
+        type: [Array],
+        required: true
+    }
 });
 
 const Story = model('Story', storySchema);
