@@ -1,40 +1,25 @@
 const { Schema, model } = require('mongoose');
 
-const storySchema = new Schema({
-    default: {
-        type: Boolean,
-        required: true
-    },
-    tutorial: {
-        type: Boolean,
+const chapterSchema = new Schema({
+    chapterNumber: {
+        type: Number,
         required: true,
-        default: false
     },
-    firstGiant: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
+    numberOfStages: {
+        type: Number, 
+        required:true
+    }
+})
 
-    theKing: {
-        type: Boolean,
+const storySchema = new Schema({
+    discoveringGreateness: chapterSchema,
+    giantTrials: chapterSchema,
+    royalTrifle: chapterSchema,
+    NarrowEscape: chapterSchema,
+    RegalResolve: chapterSchema,
+    textMatrix: {
+        type: [Array],
         required: true,
-        default: false
-    },
-    twoGiants: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
-    theUnicorn: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
-    resolution: {
-        type: Boolean,
-        required: true,
-        default: false
     },
 });
 

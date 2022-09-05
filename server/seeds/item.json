@@ -1,61 +1,161 @@
 [
     {
         "name":"jam",
-        "interactions":[],
-        "dialogueArray":[
-            "You buy a jar of jam and spread it on some bread. You deserve a break. You see the cloth that still needs to be cut, the seams that still need to be sewn. You know that this is not the time to indulge.  (Type the command USE NEEDLE ON CLOTH to progress. This ends the tutorial.)"
-        ]
+        "relevantStages":[
+            [0, 0]
+        ],
+        "scriptCoordinates":[
+            [0, 1]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"needle",
-        "interactions":["cloth"],
-        "dialogueArray":[
-            "After you’ve finished your work, you return to the jam only to find no fewer than seven flies feasting on the sweet jam. You swell with rage, justified, vengeful rage, against the flies."
+        "relevantStages":[
+            [0, 1],
+            [0, 3]
+        ],
+        "scriptCoordinates":[
+            [0, 4]
+        ],
+        "requiredInInventoryStages":[
+            [4, 0]
+        ],
+        "inventoryScriptCoordinates":[
+            [4, 1]
         ]
     },
     {
         "name":"cloth",
-        "interactions":[],
-        "dialogueArray":[]
+        "relevantStages":[
+            [0, 2]
+        ],
+        "scriptCoordinates":[
+            [0, 3]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"cheese",
-        "interactions":[],
-        "dialogueArray":[]
+        "relevantStages":[
+            [0, 5],
+            [0, 6]
+        ],
+        "scriptCoordinates":[
+            [0, 5],
+            [0, 5]
+        ],
+        "requiredInInventoryStages":[
+            [1, 1]
+        ],
+        "inventoryScriptCoordinates":[
+            [1, 2]
+        ]
     },
     {
         "name":"bird",
-        "interactions":[],
-        "dialogueArray":[]
+        "relevantStages":[
+            [0, 5],
+            [0, 6]
+        ],
+        "scriptCoordinates":[
+            [0, 6],
+            [0, 6]
+        ],
+        "requiredInInventoryStages":[
+            [1, 2]
+        ],
+        "inventoryScriptCoordinates":[
+            [1, 3]
+        ]
     },
     {
         "name":"belt",
-        "interactions":[],
-        "dialogueArray":[]
+        "relevantStages":[
+            [1, 0]
+        ],
+        "scriptCoordinates":[
+            [1, 1]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"floor",
-        "interactions":[],
-        "dialogueArray":[]
+        "relevantStages":[
+            [1, 3]
+        ],
+        "scriptCoordinates":[
+            [1, 4]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"bed",
-        "interactions":[],
-        "dialogueArray":[]
+        "relevantStages":[
+            [1, 3]
+        ],
+        "scriptCoordinates":[
+            [1, 5]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"sword",
-        "interactions":[],
-        "dialogueArray":[]
+        "relevantStages":[
+            [2, 1],
+            [2, 6]
+        ],
+        "scriptCoordinates":[
+            [2, 8],
+            [2, 7]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"bones",
-        "interactions":[],
-        "dialogueArray":[]
+        "relevantStages":[
+            [2, 1],
+            [2, 2],
+            [2, 3],
+            [2, 4],
+            [2, 5]
+        ],
+        "scriptCoordinates":[
+            [2, 2],
+            [2, 3],
+            [2, 4],
+            [2, 5],
+            [2, 6]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
+    },
+    {
+        "name":"tree",
+        "relevantStages":[
+            [3, 0]
+        ],
+        "scriptCoordinates":[
+            [3, 1]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"rope",
-        "interactions":[],
-        "dialogueArray":[]
+        "relevantStages":[
+            [3, 1]
+        ],
+        "scriptCoordinates":[
+            [3, 2]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     }
 ]
