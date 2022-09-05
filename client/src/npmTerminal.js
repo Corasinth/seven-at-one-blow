@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Terminal from 'terminal-in-react';
 
 class TermPackage extends Component {
-  showMsg = () => 'Hello World'
 
     render() {
     return (
@@ -17,15 +16,25 @@ class TermPackage extends Component {
         <Terminal
         // automatically prints any text that is logged to the console
           watchConsoleLogging
-          
+          startState='maximised'
+          prompt='white'
           color='green'
           backgroundColor='black'
           barColor='black'
           style={{ fontWeight: "bold", fontSize: "1em" }}
           commands={{
-            'console-log': () => {console.log('Success!')},
-            showmsg: this.showMsg,
-            popup: () => alert('Terminal in React'),
+            // lists the commands
+            'help': () => {console.log(`
+            new game - starts a new game
+            login - restores your save
+            save - saves your progress
+            `
+            
+            
+            
+            
+            )},
+            
 
             // this prints text the text to the terminal
             'type-text': (args, print, runCommand) => {
@@ -37,17 +46,23 @@ class TermPackage extends Component {
                   }, 100 * i);
                 }
               }
-
+            
           }}
 
-          descriptions={{
-            'console-log': 'Sends a message to the console',
-            showmsg: 'testing',
-            alert: 'alert', popup: 'alert'
-          }}
-
+        
           // message that appears when you start the terminal, can also be called on with the "show" command
-          msg='You can write anything here.'
+          msg='
+╔═══╗────────────╔═══╗╔╗───────────╔╗─╔╗
+║╔═╗║────────────║╔═╗╠╝╚╗──────────║║─║║
+║╚══╦══╦╗╔╦══╦═╗─║║─║╠╗╔╝╔══╦═╗╔══╗║╚═╣║╔══╦╗╔╗╔╗
+╚══╗║║═╣╚╝║║═╣╔╗╗║╚═╝║║║─║╔╗║╔╗╣║═╣║╔╗║║║╔╗║╚╝╚╝║
+║╚═╝║║═╬╗╔╣║═╣║║║║╔═╗║║╚╗║╚╝║║║║║═╣║╚╝║╚╣╚╝╠╗╔╗╔╝
+╚═══╩══╝╚╝╚══╩╝╚╝╚╝─╚╝╚═╝╚══╩╝╚╩══╝╚══╩═╩══╝╚╝╚╝                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                        
+
+Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands to play as a quick-witted tailor and navigate a series of puzzles. 
+ 
+To get started use the command "new game", or "login" to restore your save. If you get stuck, use the command "help" to see a list of available commands'
         />
       </div>
     );
