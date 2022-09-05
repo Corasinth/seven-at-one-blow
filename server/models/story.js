@@ -1,30 +1,26 @@
 const { Schema, model } = require('mongoose');
 
 const chapterSchema = new Schema({
-    currentChapter: {
-        type: Boolean,
-        required: true,
-        default: true
-    },
     chapterNumber: {
         type: Number,
         required: true,
     },
-    stageTracker: {
-        type: Number 
+    numberOfStages: {
+        type: Number, 
+        required:true
     }
 })
 
 const storySchema = new Schema({
-    default: {
-        type: Boolean,
-        required: true
-    },
     discoveringGreateness: chapterSchema,
-    giantTrials: chapterSchema, 
+    giantTrials: chapterSchema,
     royalTrifle: chapterSchema,
     NarrowEscape: chapterSchema,
     RegalResolve: chapterSchema,
+    textMatrix: {
+        type: [Array],
+        required: true,
+    },
 });
 
 const Story = model('Story', storySchema);
