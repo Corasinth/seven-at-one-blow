@@ -22,6 +22,16 @@ itemSchema.methods.useItem = async function (optionalItemTarget) {
     if (this.interactions.includes(targetItem)) {
         return true
     } 
+    //Render some text 
+};
+
+itemSchema.methods.takeItem = async function () {
+    //Check story object for current progression, item fails to be taken if we aren't in the right area
+   
+    
+    //Check player inventory, if object already exists you can't take another one 
+
+    //Check that the optionalItemTarget is correct for this command  
 
     //Render some text 
 };
