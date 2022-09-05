@@ -1,102 +1,161 @@
 [
     {
         "name":"jam",
-        "interactions":[],
-        "text":[
-            "You buy a jar of jam and spread it on some bread. You deserve a break. You see the cloth that still needs to be cut, the seams that still need to be sewn. You know that this is not the time to indulge.  (Type the command USE NEEDLE ON CLOTH to progress. This ends the tutorial.)"
-        ]
+        "relevantStages":[
+            [0, 0]
+        ],
+        "scriptCoordinates":[
+            [0, 1]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"needle",
-        "interactions":[],
-        "text":[
-            "After you’ve finished your work, you return to the jam only to find no fewer than seven flies feasting on the sweet jam. You swell with rage, justified, vengeful rage, against the flies.", "You take your favorite needle with you; it’s always brought your good luck before! You slide it into the hem of your shirt for later.",
-            "You notice that the king’s robes, while splendid, have a small tear. The king has been most generous, so you offer to have them fixed. The king of course assumes you will hire a tailor, and accepts. That night, you fix his robes with your lucky needle, and present them to him the next day. The king wears them proudly. Unfortunately, a loose thread near the foot tangles in the king’s royal footwear in exactly the wrong way, tripping him. The king falls down some stairs and breaks his neck. Absent a ruler and an official successor, you take control of the entire kingdom and rule as you please, your fearsome reputation ensuring that no one dares challenge you for the rest of time. "
+        "relevantStages":[
+            [0, 1],
+            [0, 3]
+        ],
+        "scriptCoordinates":[
+            [0, 4]
+        ],
+        "requiredInInventoryStages":[
+            [4, 0]
+        ],
+        "inventoryScriptCoordinates":[
+            [4, 1]
         ]
     },
     {
         "name":"cloth",
-        "interactions":[],
-        "text":[
-            "You grab a strip of the nearby cloth and swat the flies. The cloth makes a satisfying THWACK. Impressively, you’ve managed to kill the flies in a single blow. All seven of them lie squashed and defeated. That’s what justice looks like. The world should know about your great feat. You think long and hard about the best way to show off your achievement to the world."
-        ]
-    },
-    {
-        "name":"knife",
-        "interactions":[],
-        "text":[
-            "You chisel the phrase “Seven At One Blow” onto the belt to let the world know of your bravery and skill. Fastening the belt about your waist you prepare to set out into the world so that everyone can see who you’ve become.", 
-            "Before you go, you look around your small house. You see the cloth heaped on the table, your favorite needle, and remember the toil you faced when you were just a tailor. You see the wheel of cheese that you were planning on using for lunch, the slice of bread soiled by those flies before you could take care of them, and a small bird in the birdhouse just outside your window. And you see nothing else. Yes, being a tailor was difficult, but now it’s time to show the world what you can really do.",
-            "But first, you should take some items to prepare for the journey ahead."
-        ] 
+        "relevantStages":[
+            [0, 2]
+        ],
+        "scriptCoordinates":[
+            [0, 3]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"cheese",
-        "interactions":[],
-        "text":[
-            "You grab the wheel of cheese and keep it in your pocket for later.",
-            "That display of strength is like nothing to you. You pull out your wheel of cheese and crush it in your hand until a flood of whey pours out of it, much more liquid than the giant could produce.",
-            "Astonished, the giant challenges you again. He picks up the biggest boulder he can find and tosses it into the air, and out of sight. Several seconds later, you both hear the crash of tree branches snapping as the boulder smashes down somewhere out of sight."
+        "relevantStages":[
+            [0, 5],
+            [0, 6]
+        ],
+        "scriptCoordinates":[
+            [0, 5],
+            [0, 5]
+        ],
+        "requiredInInventoryStages":[
+            [1, 1]
+        ],
+        "inventoryScriptCoordinates":[
+            [1, 2]
         ]
     },
     {
         "name":"bird",
-        "interactions":[],
-        "text":[
-            "You lunge out the window, your finely-honed tailor reflexes snatching the bird before it can fly away, and keep it in your pocket for later."
+        "relevantStages":[
+            [0, 5],
+            [0, 6]
+        ],
+        "scriptCoordinates":[
+            [0, 6],
+            [0, 6]
+        ],
+        "requiredInInventoryStages":[
+            [1, 2]
+        ],
+        "inventoryScriptCoordinates":[
+            [1, 3]
         ]
     },
     {
         "name":"belt",
-        "interactions":[],
-        "text":[
-            "The giant is astonished that as stripling like you could slay seven with a single blow. You assure him that your strength is no empty brag, and he challenges you to prove it. Picking up a rock, the giant squeezes it in one enormous fist until the water trapped in the stone trickles out, and challenges you to beat that, if you can."
-        ]
+        "relevantStages":[
+            [1, 0]
+        ],
+        "scriptCoordinates":[
+            [1, 1]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"floor",
-        "interactions":[],
-        "text":["The bed you’ve been given is simply too big for you. You decid to sleep in the corner of the room instead. In the middle of the night, you wake up to an enormous smashing sound and see that the giant smashed an iron bar against the bed, probably out of fear to what you could do to him. The next morning when you wake up, the giants are shocked to see you alive and flee. They simply couldn’t handle your greatness."]
+        "relevantStages":[
+            [1, 3]
+        ],
+        "scriptCoordinates":[
+            [1, 4]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"bed",
-        "interactions":[],
-        "text":[
-            "You struggle and sweat, but eventually you climb up into the bed and fall asleep, lost in its vastness. That night, you wake up briefly to a horrible crashing sound and great pain. It seems the giant didn’t like you after all, and he decided to crush you while you were sleeping."
-        ]
+        "relevantStages":[
+            [1, 3]
+        ],
+        "scriptCoordinates":[
+            [1, 5]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"sword",
-        "interactions":[],
-        "text":[
-            "You draw your blade, full of confidence and might, and charge the giants with a mighty bellow. Your voice cracks a little, but you don’t stop until you bounce off the giant you charged. Awake, and furious at being attacked by such a small creature, the giant grasps you in its hands and crushes your bones.",
-            "Using your sword, you slash the bodies of the giants and blood spewed everywhere. Covered in the blood of giants, you report back to the king’s men and they confirm that you have slayed the giants. With your head held high, you approach the king in search of your reward."
-        ]
+        "relevantStages":[
+            [2, 1],
+            [2, 6]
+        ],
+        "scriptCoordinates":[
+            [2, 8],
+            [2, 7]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"bones",
-        "interactions":[],
-        "text":[
-            "You stuff the animal bones in your satchel.",
-            "You quietly hide yourself in a nearby tree and throw a bone at the first of the giants. It hits him in the eye, and he wakes up extremely unhappy. Assuming the other giant threw the bone and is pretending to be asleep, the first giant loudly accuses him, and soon the two giants are quarreling. Unable to settle the argument however, and still tired, they go back to sleep.",
-            "You throw another bone at the second giant. This time he wakes up vengeful, thinking the first giant is trying to get him back for the first bone. Again, the giants quarrel, but eventually they go back to sleep.",
-            "You throw a bone at the second giant again. This time the quarrel is much longer and the giants stand up and walk around the clearing animatedly. Unable to get the other to admit anything, they sit down facing away from each other, furious.",
-            "You throw a bone at the first giant. In a rage, he stands up, stomps over to the second giant, and punches him. The giants begin to fight violently, in their anger tearing up trees to hit each other with. Each punch infuriates the other more until finally, both giants beat each other to death.",
-            "Having provoked the two giants to fight and kill each other, all you need to do is make it look like you killed them both…"
-        ]
-    },
-    {
-        "name":"rope",
-        "interactions":[
-            "The unicorn lunges at you and quick as a whip you decide to boldly climb the tree away from the murderous horse. Unable to stop its charge, the unicorn slams into the trunk of the tree below. It is stuck fast, as was the plan all along. Now you just need to capture it."
+        "relevantStages":[
+            [2, 1],
+            [2, 2],
+            [2, 3],
+            [2, 4],
+            [2, 5]
         ],
-        "text":[]
+        "scriptCoordinates":[
+            [2, 2],
+            [2, 3],
+            [2, 4],
+            [2, 5],
+            [2, 6]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
+    },
+    {
+        "name":"tree",
+        "relevantStages":[
+            [3, 0]
+        ],
+        "scriptCoordinates":[
+            [3, 1]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     },
     {
         "name":"rope",
-        "interactions":[],
-        "text":[
-            "You tie some rope around the unicorn's neck, and then some more for good measure. Having restrained the unicorn, you hack out a chunk of the tree, leaving the horn safely embedded in the old wood, and lead the unicorn back to the castle."
-        ]
+        "relevantStages":[
+            [3, 1]
+        ],
+        "scriptCoordinates":[
+            [3, 2]
+        ],
+        "requiredInInventoryStages":[],
+        "inventoryScriptCoordinates":[]
     }
 ]
