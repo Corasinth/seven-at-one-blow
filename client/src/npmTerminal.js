@@ -25,15 +25,20 @@ class TermPackage extends Component {
           commands={{
             // lists the commands
             'help': () => {console.log(`
-            new game - starts a new game
+            new-game - starts a new game
             login - restores your save
             save - saves your progress
-            `
-            
-            
-            
-            
-            )},
+            signup -
+            `)},
+
+            // user commands
+            'take': () => {},
+            'use': () => {},
+            'signup': () => {},
+            'login': () => {},
+            'save': () => {},
+            'new-game': () => {},
+           
             
 
             // this prints text the text to the terminal
@@ -51,17 +56,17 @@ class TermPackage extends Component {
 
         
           // message that appears when you start the terminal, can also be called on with the "show" command
-          msg='
+          msg=' 
 ╔═══╗────────────╔═══╗╔╗───────────╔╗─╔╗
 ║╔═╗║────────────║╔═╗╠╝╚╗──────────║║─║║
 ║╚══╦══╦╗╔╦══╦═╗─║║─║╠╗╔╝╔══╦═╗╔══╗║╚═╣║╔══╦╗╔╗╔╗
 ╚══╗║║═╣╚╝║║═╣╔╗╗║╚═╝║║║─║╔╗║╔╗╣║═╣║╔╗║║║╔╗║╚╝╚╝║
 ║╚═╝║║═╬╗╔╣║═╣║║║║╔═╗║║╚╗║╚╝║║║║║═╣║╚╝║╚╣╚╝╠╗╔╗╔╝
 ╚═══╩══╝╚╝╚══╩╝╚╝╚╝─╚╝╚═╝╚══╩╝╚╩══╝╚══╩═╩══╝╚╝╚╝                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                        
-
-Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands to play as a quick-witted tailor and navigate a series of puzzles. 
+                                                                                                                                                                                                                                         
  
+Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands to play as a quick-witted tailor and navigate a series of puzzles. 
+  
 To get started use the command "new game", or "login" to restore your save. If you get stuck, use the command "help" to see a list of available commands'
         />
       </div>
