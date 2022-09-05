@@ -1,10 +1,25 @@
 [
     {
-        "name": "John",
-        "story": "Walked the dog"
-    },
-    {
-
+        "default":true,
+        "discoveringGreateness":{
+            "currentChapter":false,
+            "stageChapter":[false,false,false,false,false,false,false]
+            },
+        "giantTrials":{
+            "currentChapter":false,
+            "stageChapter":[false,false,false,false]
+            },
+        "royalTrifle":{
+            "currentChapter":false,
+            "stageChapter":[false,false,false,false,false,false]
+            },
+        "NarrowEscape":{
+            "currentChapter":false,
+            "stageChapter":[false,false]
+            },
+        "RegalResolve":{
+            "currentChapter":false,
+            "stageChapter":[false]
+            }
     }
-
 ]
