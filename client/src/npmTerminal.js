@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Terminal from 'terminal-in-react';
 import itemInteraction from './utils/userCommands/useCmd'
+import takeItemInteraction from './utils/userCommands/takeCmd';
 
 class TermPackage extends Component {
 
@@ -33,7 +34,7 @@ class TermPackage extends Component {
             `)},
 
             // user commands
-            'take': (args, print, runCommand) => {},
+            'take': (args, print, runCommand) => {print(takeItemInteraction(args))},
             'use': (args, print, runCommand) => {print(itemInteraction(args))},
             'signup': (args, print, runCommand) => {},
             'login': (args, print, runCommand) => {},
