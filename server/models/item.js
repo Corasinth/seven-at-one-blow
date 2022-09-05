@@ -15,13 +15,14 @@ const itemSchema = new Schema({
 });
 
 itemSchema.methods.useItem = async function (optionalItemTarget) {
-    const targetItem = optionalItemTarget.toLowerCase()
+    // const targetItem = optionalItemTarget.toLowerCase()
     //Check story object for current progression, item fails to be used if we aren't in the right area
     
     //Check that the optionalItemTarget is correct for this command  
-    if (this.interactions.includes(targetItem)) {
-        return true
-    } 
+    // if (this.interactions.includes(targetItem)) {
+    //     return true
+    // } 
+    
     //Render some text 
 };
 
@@ -33,6 +34,8 @@ itemSchema.methods.takeItem = async function () {
 
     //Check that the optionalItemTarget is correct for this command  
 
+    console.log('test success')
+    return 'test success'
     //Render some text 
 };
 
