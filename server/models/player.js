@@ -14,7 +14,7 @@ const playerSchema = new Schema({
         type: String,
         trim: true,
     },
-    save: {
+    storySave: {
         type: [Number],
         default: [0,1]
     },
@@ -32,30 +32,6 @@ playerSchema.pre('save', async function (next) {
     }
     next()
 });
-
-//Use item method
-playerSchema.methods.use = async function (item, optionalItemTarget) {
-    switch (item.toLowerCase()) {
-        case 'needle':
-            return (Placeholder.use(optionalItemTarget))
-
-        case 'SomeItem':
-            return (Placeholder.use(optionalItemTarget))
-
-        case 'SomeItem':
-            return (Placeholder.use(optionalItemTarget))
-
-        case 'SomeItem':
-            return (Placeholder.use(optionalItemTarget))
-
-        case 'SomeItem':
-            return (Placeholder.use(optionalItemTarget))
-
-        default:
-            `That can't help me here` 
-            break;
-    }
-};
 
 const Player = model('Player', playerSchema);
 
