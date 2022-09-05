@@ -5,9 +5,9 @@ const itemSchema = new Schema({
         type: String,
         required: true
     },
-    interactions: {
-        type: [String],
-        required: true
+    stagesRequiredInInventory: {
+        type: [Array],
+        required: false
     },
     relevantStages: {
         type: [Array],
@@ -15,15 +15,42 @@ const itemSchema = new Schema({
     }
 });
 
-itemSchema.methods.deliverScript = async function (chapter, stage) {
-    for (let i = 0; i < this.relevantStages.length; i++) {
-        if(this.relevantStages[i][0]=== chapter && this.relevantStages[i][1] === stage) {
-            return script.textMatrix[chapter][stage]
-        }
-    }
-    return `${this.name} can't be used here.`
+itemSchema.methods.deliverScript = async function (chapter, stage, optionalTargetItem) {
+    //Establishes variables so the checker function can access the parameters
+    let chapter = chapter;
+    let stage = stage;
+    let optionalTargetItem = optionalTargetItem;
+
+    let inventoryChecker = checker (this.requiresInventoryStages);
+    let regularChecker = checker (this.relevantStages);
+    //If either of the above functions returns true, this method returns true 
+    return (inventoryChecker || regularChecker)
 };
 
+function checker (matrixToCheck) {
+    let correctStage = false
+    //Checks the incoming current chapter and stage against the item's relevantStages
+    for (let i = 0; i < this.relevantStages.length; i++) {
+        //If a match is found, checks if there's something this item needs to be used on, and if so makes sure that item has also been passed in 
+        if (matrixToCheck[i][0] === chapter && matrixToCheck[i][1] === stage) {
+            if (this.relevantStages[i][2]) {
+                if (this.relevantStages[i][2] === optionalTargetItem) {
+                    correctStage = true
+                    break;
+                } else {
+                    continue;
+                }
+            }
+            correctStage = true;
+            break;
+        }
+    }
+    if (correctStage === true) {
+        //Returns true if the incoming chapter and stage are appropriate for the use of the item 
+        return true;
+    }
+    return false 
+}
 const Item = model('Item', itemSchema);
 
 module.exports = Item;
