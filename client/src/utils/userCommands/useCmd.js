@@ -78,7 +78,7 @@ function itemInteraction(args) {
         }
     }
     if (coordinates === false){
-       return 'error'
+       return 'error with use cmd'
     }
 }
 
