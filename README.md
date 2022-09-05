@@ -23,7 +23,7 @@ You can clone or fork this repository to play it on your computer offline. Once 
 
 ## Usage 
 
-To play this game simply type a few simple commands into the mock terminal to solve the puzzles. You can just start 
+To play this game simply type a few simple commands into the mock terminal to solve the puzzles. All of the commands are hinted to in the text provided, see if you can get the right combination of words to progress through the storyline!
 
 If you get stuck, use the `help` command to see what you can do. Alternatively, you can take a look at the original story this game is based on [found here](https://www.gutenberg.org/files/503/503-h/503-h.htm#link2H_4_0031). 
 
@@ -41,7 +41,7 @@ There will soon be a helper file to edit the existing item script coordinates pr
 
 ## Credits
 
-This text-adventure is adapted from the fairy tale [The Brave Little Soldier](https://www.gutenberg.org/files/503/503-h/503-h.htm#link2H_4_0031), which can be found at the link. 
+This text-adventure is adapted from the fairy tale [The Brave Little Tailor](https://www.gutenberg.org/files/503/503-h/503-h.htm#link2H_4_0031), which can be found at the link. 
 
 ### Technologies Used
 
