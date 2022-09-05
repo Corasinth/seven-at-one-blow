@@ -5,32 +5,32 @@ const typeDefs = gql`
         _id: ID!
         username: String
         password: String
-        playerSave: [Number] 
+        playerSave: [Int] 
         inventory: [String]
     }
 
     type Stage {
-        chapterNumber: Number
-        numberOfStages: Number
+        chapterNumber: Int
+        numberOfStages: Int
     }
 
     type Story {
         _id: ID!
-        discoveringGreateness: newWord
-        giantTrials: newWord
-        royalTrifle: newWord
-        NarrowEscape: newWord
-        RegalResolve: newWord
-        textMatrix: [Array]
+        discoveringGreateness: Stage
+        giantTrials: Stage
+        royalTrifle: Stage
+        NarrowEscape: Stage
+        RegalResolve: Stage
+        textMatrix: [[String]]
     }
 
     type Item {
         _id: ID!
         name: String!
-        relevantStages: [Array]
-        scriptCoordinates: [Array]
-        requiredInInventoryStages: [Array]
-        inventoryScriptCoordinates: [Array]
+        relevantStages: [[Int]]
+        scriptCoordinates: [[Int]]
+        requiredInInventoryStages: [[Int]]
+        inventoryScriptCoordinates: [[Int]]
     }
 
     type Auth {
@@ -38,18 +38,18 @@ const typeDefs = gql`
         player: Player
     }
 
-    type StoryData {
+    type StoryInfo {
         story: Story
         items: Item
     }
 
     type Query {
-        getStoryData: StoryData
+        getStoryInfo: StoryInfo
     }
 
     type Mutation {
         login(username:String!, password:String!): Auth
-        savePlayer(username:String!, storySave: [Number]!, inventory:[String]!)
+        savePlayer(username:String!, storySave: [Int]!, inventory:[String]!): Auth
         newPlayer(username:String!, password:String!): Auth
     }
 `
