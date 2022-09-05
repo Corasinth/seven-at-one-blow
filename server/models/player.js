@@ -12,12 +12,11 @@ const playerSchema = new Schema({
         type: String,
         trim: true,
     },
-    name: {
-        type: String,
-        trim: true,
-    },
     playerSave: {
         type: Schema.Types.ObjectId,
+    },
+    inventory: {
+        type: [String]
     }
 });
 
