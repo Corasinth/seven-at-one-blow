@@ -1,25 +1,32 @@
 [
    {
-      "discoveringGreateness": {
-         "chapterNumber": 0,
-         "numberOfStages": 6
-      },
-      "giantTrials": {
-         "chapterNumber": 1,
-         "numberOfStages": 4
-      },
-      "royalTrifle": {
-         "chapterNumber": 2,
-         "numberOfStages": 7
-      },
-      "NarrowEscape": {
-         "chapterNumber": 3,
-         "numberOfStages": 2
-      },
-      "RegalResolve": {
-         "chapterNumber": 4,
-         "numberOfStages": 1
-      },
+      "chapters": [
+         {
+            "chapterName": "Discovering Greatness",
+            "chapterNumber": 0,
+            "numberOfStages": 6 
+         },
+         {
+            "chapterName": "The Trials of a Giant",
+            "chapterNumber": 1,
+            "numberOfStages": 4 
+         },
+         {
+            "chapterName": "A Royal Trifle",
+            "chapterNumber": 2,
+            "numberOfStages": 0 
+         },
+         {
+            "chapterName": "The Narrow Escape",
+            "chapterNumber": 3,
+            "numberOfStages": 2 
+         },
+         {
+            "chapterName": "Regal Resolve",
+            "chapterNumber": 4,
+            "numberOfStages": 1 
+         }
+      ],
       "textMatrix": [
          [
             "The morning is bright and the day is warm. You are a tailor who has been working hard with needle and cloth since dawn. At your door there is a woman selling strawberry jam. (Type the command “take jam” to progress)",
