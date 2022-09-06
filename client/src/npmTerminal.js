@@ -3,7 +3,6 @@ import Terminal from 'terminal-in-react';
 import itemInteraction from './utils/userCommands/useCmd'
 import takeItemInteraction from './utils/userCommands/takeCmd';
 import loginAccount from './utils/userCommands/loginCmd';
-import Login from './utils/userCommands/loginCmd';
 class TermPackage extends Component {
 
     render() {

@@ -1,4 +1,19 @@
-import { gql } from '@apollo/client';
+import { LOGIN } from '../mutations.js'
+import { useMutation } from '@apollo/client'
+
+const [loginPlayer, { error, data }] = useMutation(LOGIN);
+
+function login(){
+  try {
+    const { data } = await loginPlayer( {} )   
+  }
+}
+
+loginPlayer()
+
+export default login;
+
+// import { gql } from '@apollo/client';
 
 //  var testAccount = [
 //     {
@@ -29,45 +44,45 @@ import { gql } from '@apollo/client';
 //     }
 //  }
 
-// User Login info
-const database = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ];
+// // User Login info
+// const database = [
+//     {
+//       username: "user1",
+//       password: "pass1"
+//     },
+//     {
+//       username: "user2",
+//       password: "pass2"
+//     }
+//   ];
   
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password"
-  };
+//   const errors = {
+//     uname: "invalid username",
+//     pass: "invalid password"
+//   };
   
-  const loginAccount = (event) => {
-    //Prevent page reload
-    event.preventDefault();
+//   const loginAccount = (event) => {
+//     //Prevent page reload
+//     event.preventDefault();
   
-    var { uname, pass } = document.forms[0];
+//     var { uname, pass } = document.forms[0];
   
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
+//     // Find user login info
+//     const userData = database.find((user) => user.username === uname.value);
   
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }
-  };
+//     // Compare user info
+//     if (userData) {
+//       if (userData.password !== pass.value) {
+//         // Invalid password
+//         setErrorMessages({ name: "pass", message: errors.pass });
+//       } else {
+//         setIsSubmitted(true);
+//       }
+//     } else {
+//       // Username not found
+//       setErrorMessages({ name: "uname", message: errors.uname });
+//     }
+//   };
 
-export default loginAccount;
+// export default loginAccount;
 // export default Login;
