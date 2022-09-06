@@ -38,6 +38,25 @@ const resolvers = {
             }
             const token = signToken(player);
             return {token, player};
+        },
+
+        savePlayer: async (parent, {username, storySave, inventory}, context) => {
+            if (context.user) {
+                const player = await Player.find({ username });
+                player.storySave = storySave;
+                player.inventory = inventory;
+                await player.save();
+                return { player }
+            }
+            throw new AuthenticationError('Please log in to save your game');
+        },
+
+        loadSave: async (parent, {username}, context) => {
+            if (context.user) {
+                const player = await Player.find({ username });
+                return { player }
+            }
+            throw new AuthenticationError('Please log in to load your save.');
         }
     }
 };
