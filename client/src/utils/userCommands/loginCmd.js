@@ -12,6 +12,7 @@ function login(){
   // }
   // const [loginPlayer, { error, data }] = useMutation(LOGIN);
   // console.log("string");
+  const { player } = usePlayerContext;
   console.log(player.test)
 }
 

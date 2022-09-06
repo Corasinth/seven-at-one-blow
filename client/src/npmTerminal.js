@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, createContext, useContext } from 'react';
 import Terminal from 'terminal-in-react';
 import itemInteraction from './utils/userCommands/useCmd'
 import takeItemInteraction from './utils/userCommands/takeCmd';
 import login from './utils/userCommands/loginCmd';
-const PlayerContext = React.createContext();
+
+const playerContext = createContext();
+const usePlayerContext = () => {useContext(playerContext)};
 
 const player = { test: 'string' }
 
