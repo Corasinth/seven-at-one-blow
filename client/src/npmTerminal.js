@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Terminal from 'terminal-in-react';
 import itemInteraction from './utils/userCommands/useCmd'
 import takeItemInteraction from './utils/userCommands/takeCmd';
-
+import loginAccount from './utils/userCommands/loginCmd';
+import Login from './utils/userCommands/loginCmd';
 class TermPackage extends Component {
 
     render() {
@@ -36,8 +37,8 @@ class TermPackage extends Component {
             // user commands
             'take': (args, print, runCommand) => {print(takeItemInteraction(args))},
             'use': (args, print, runCommand) => {print(itemInteraction(args))},
-            'signup': (args, print, runCommand) => {},
-            'login': (args, print, runCommand) => {},
+            'signup': (args, print, runCommand) => {print(signUp(args))},
+            'login': (args, print, runCommand) => {print(loginAccount(args))},
             'save': (args, print, runCommand) => {},
             'new-game': (args, print, runCommand) => {},
            
