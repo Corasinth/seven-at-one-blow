@@ -26,12 +26,12 @@ const itemSchema = new Schema({
 itemSchema.methods.deliverScript = async function (chapter, stage, inInventory, optionalTargetItem) {
     //Check the relevant stages matrix on the item object for any matches, and set the script coordinates to the returned position if there is a match 
     let regularPosition = checker (this.relevantStages, chapter, stage, optionalTargetItem);
-    let coordinates = scriptCoordinates[regularPosition];
-
+    let coordinates = this.scriptCoordinates[regularPosition];
+    console.log(coordinates)
     //If the incoming chapter and stage turn up no results in the regular stages, we check the inventory stages and overwrite the result
     if (inInventory && !coordinates) {
         let inventoryPosition = checker (this.requiredInInventoryStages, chapter, stage, optionalTargetItem);
-        coordinates = inventoryScriptCoordinates[inventoryPosition];
+        coordinates = this.inventoryScriptCoordinates[inventoryPosition];
     }
     //Returns the coordinates, or if there were no matches simply returns false 
     return coordinates || false;
@@ -43,8 +43,8 @@ function checker (matrixToCheck, chapter, stage, optionalTargetItem) {
     for (let i = 0; i < matrixToCheck.length; i++) {
         //If a match is found, checks if there's something this item needs to be used on, and if so makes sure that item has also been passed in 
         if (matrixToCheck[i][0] === chapter && matrixToCheck[i][1] === stage) {
-            if (this.relevantStages[i][2]) {
-                if (this.relevantStages[i][2] === optionalTargetItem) {
+            if (matrixToCheck[i][2]) {
+                if (matrixToCheck[i][2] === optionalTargetItem) {
                     position = i;
                     break;
                 } else {

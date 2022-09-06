@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const chapterSchema = new Schema({
+    chapterName: {
+        type: String,
+        required: true,
+    },
     chapterNumber: {
         type: Number,
         required: true,
@@ -12,11 +16,7 @@ const chapterSchema = new Schema({
 })
 
 const storySchema = new Schema({
-    discoveringGreateness: chapterSchema,
-    giantTrials: chapterSchema,
-    royalTrifle: chapterSchema,
-    NarrowEscape: chapterSchema,
-    RegalResolve: chapterSchema,
+    chapters: [chapterSchema],
     textMatrix: {
         type: [Array],
         required: true,
