@@ -17,13 +17,14 @@ function onTake (arg1, arg2) {
 
 //Some kind of query returns an array of item objects, a player object, and our one story object (see models)
 
-function populateKeyObj (itemArray) {
-    for (let item of itemArray) {
-        keyObj[item.name] = item
-    }
-}
+// const keyObj = {}
+// function populateKeyObj (itemArray) {
+//     for (let item of itemArray) {
+//         keyObj[item.name] = item
+//     }
+// }
 
-keyObj = {
+const keyObj = {
     needle: {
         "name":"needle",
         "relevantStages":[
@@ -127,6 +128,10 @@ keyObj = {
 //        return 'error'
 //     }
 // }
+
+function takeItemInteraction(args) {
+    console.log("I'm a placeholder");
+}
 
 export default takeItemInteraction;
   
