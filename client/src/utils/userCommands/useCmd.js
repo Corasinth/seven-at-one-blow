@@ -29,64 +29,64 @@ function populateKeyObj (itemArray) {
     }
 }
 
-keyObj = {
-    needle: {
-        "name":"needle",
-        "relevantStages":[
-            [0, 1],
-            [0, 3]
-        ],
-        "scriptCoordinates":[
-            [0, 4]
-        ],
-        "requiredInInventoryStages":[
-            [4, 0]
-        ],
-        "inventoryScriptCoordinates":[
-            [4, 1]
-        ]
-    },
-    jam: {
-        "name":"jam",
-        "relevantStages":[
-            [0, 0]
-        ],
-        "scriptCoordinates":[
-            [0, 1]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    }
-    //add others
-}
+// keyObj = {
+//     needle: {
+//         "name":"needle",
+//         "relevantStages":[
+//             [0, 1],
+//             [0, 3]
+//         ],
+//         "scriptCoordinates":[
+//             [0, 4]
+//         ],
+//         "requiredInInventoryStages":[
+//             [4, 0]
+//         ],
+//         "inventoryScriptCoordinates":[
+//             [4, 1]
+//         ]
+//     },
+//     jam: {
+//         "name":"jam",
+//         "relevantStages":[
+//             [0, 0]
+//         ],
+//         "scriptCoordinates":[
+//             [0, 1]
+//         ],
+//         "requiredInInventoryStages":[],
+//         "inventoryScriptCoordinates":[]
+//     }
+//     //add others
+// }
 
-const player = playerData
-const story = storyData 
+// const player = playerData
+// const story = storyData 
 
-function itemInteraction(args){
-    let currentStoryCoordinates = player.storySave 
-    let inInventory = player.inventory.includes(args[1]) //where args[1] is 'needle' or whatever the object is 
-}
-
-
+// function itemInteraction(args){
+//     let currentStoryCoordinates = player.storySave 
+//     let inInventory = player.inventory.includes(args[1]) //where args[1] is 'needle' or whatever the object is 
+// }
 
 
-function itemInteraction(args) {
-    for (name in keyObj) {
-        if (name === arg1) {
-            coordinates = keyObj[name].deliverScript(arg3)
-        }
-    }
-    if (coordinates === false){
-       return 'error with use cmd'
-    }
-}
 
-module.exports = itemInteraction
+
+// function itemInteraction(args) {
+//     for (name in keyObj) {
+//         if (name === arg1) {
+//             coordinates = keyObj[name].deliverScript(arg3)
+//         }
+//     }
+//     if (coordinates === false){
+//        return 'error with use cmd'
+//     }
+// }
+
+// module.exports = itemInteraction
 
 
 // // TEMP STUFF
-itemSchema.methods.deliverScript = async function (chapter, stage, inInventory, optionalTargetItem) {
+async function deliverScript (chapter, stage, inInventory, optionalTargetItem) {
     //Check the relevant stages matrix on the item object for any matches, and set the script coordinates to the returned position if there is a match 
     let regularPosition = checker (this.relevantStages, chapter, stage, optionalTargetItem);
     let coordinates = scriptCoordinates[regularPosition];

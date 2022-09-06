@@ -1,20 +1,15 @@
-const { Player } = require('../models');
+const { Player, Story, Item } = require('../models');
 const { AuthenticationError }  = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        loadSave: async (parent, args, context) => {
-            if(context.user) {
-                const playerData = await Player.findOne({})
-                // .select('-__v -password')
-                // .populate('')?
-                return playerData;
-            }
-
-            throw new AuthenticationError('Not logged in')
-
-        }
+      getStoryInfo: async(parent, args, context) => {
+        const storyData = await Story.findOne({});
+        const itemData = await Item.find({})
+        const storyInfo = {story: storyData, items: itemData};
+        return storyInfo;
+      } 
     },
 
     Mutation: {

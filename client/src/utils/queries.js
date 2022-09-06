@@ -1,35 +1,31 @@
 import { gql } from '@apollo/client';
 
-export const LOGIN = gql`
-  query user($username: String!) {
-    user(username: $username) {
-      _id
-      username
-      password
-`;
+// export const PLAYER = gql`
+//   query player {
+//     player {
+//       _id
+//       username
+//     }
+//   }
+// `;
 
-export const PLAYER = gql`
-  query player {
+export const STORY_INFO = gql`
+query getStoryInfo {
+  getStoryInfo {
+    story {
+      textMatrix
       _id
-      username
-      password
+    }
+    items {
+      _id
       name
-      health
-      strength
+      relevantStages
+      scriptCoordinates
+      requiredInInventoryStages
+      inventoryScriptCoordinates
     }
   }
-`;
-
-export const SAVE = gql`
-  query loadSave {
-    loadSave {
-      _id
-      username
-      password
-      name
-      playerSave
-    }
-  }
+}
 `;
 
 export const ITEMS = gql`
@@ -37,22 +33,5 @@ export const ITEMS = gql`
     _id
     name
     interactions
-  }
-`;
-
-export const MONSTERS = gql` 
-  query loadMonsters {
-    _id
-    name
-    strength
-    health
-  }
-`;
-
-export const NPC = gql` 
-  query loadNPC {
-    _id
-    name
-    dialouge
   }
 `;
