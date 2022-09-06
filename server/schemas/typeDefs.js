@@ -9,19 +9,16 @@ const typeDefs = gql`
         inventory: [String]
     }
 
-    type Stage {
+    type Chapter {
+        chapterName: String
         chapterNumber: Int
         numberOfStages: Int
     }
 
     type Story {
-        _id: ID!
-        discoveringGreateness: Stage
-        giantTrials: Stage
-        royalTrifle: Stage
-        NarrowEscape: Stage
-        RegalResolve: Stage
-        textMatrix: [[String]]
+      _id: ID
+      chapters: [Chapter]
+      textMatrix: [[String]]
     }
 
     type Item {
@@ -40,7 +37,7 @@ const typeDefs = gql`
 
     type StoryInfo {
         story: Story
-        items: Item
+        items: [Item]
     }
 
     type Query {

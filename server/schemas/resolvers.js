@@ -5,10 +5,10 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
       getStoryInfo: async(parent, args, context) => {
-        const storyData = await Story.find({});
+        const storyData = await Story.findOne({});
         const itemData = await Item.find({})
-        const data = [storyData, itemData];
-        return data;
+        const storyInfo = {story: storyData, items: itemData};
+        return storyInfo;
       } 
     },
 
