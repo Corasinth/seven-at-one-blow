@@ -128,5 +128,5 @@ keyObj = {
 //     }
 // }
 
-// module.exports = takeItemInteraction
+export default takeItemInteraction;
   
