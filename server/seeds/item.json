@@ -14,7 +14,7 @@
         "name":"needle",
         "relevantStages":[
             [0, 1, "cloth"],
-            [0, 3, "belt"]
+            [0, 3, "cloth"]
         ],
         "scriptCoordinates":[
             [0, 2],
@@ -41,8 +41,8 @@
     {
         "name":"cheese",
         "relevantStages":[
-            [0, 5],
-            [0, 6]
+            [0, 4],
+            [0, 5]
         ],
         "scriptCoordinates":[
             [0, 5],
@@ -58,8 +58,8 @@
     {
         "name":"bird",
         "relevantStages":[
-            [0, 5],
-            [0, 6]
+            [0, 4],
+            [0, 5]
         ],
         "scriptCoordinates":[
             [0, 6],
