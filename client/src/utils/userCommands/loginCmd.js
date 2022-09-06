@@ -19,7 +19,7 @@
     var password = "";
 
     for (var i = 0; i < testAccount.length; i++){
-        if (username === testAccount[i].username && password === testAccount[i].password){
+        if (username.input === testAccount[i].username && password.input === testAccount[i].password){
             return "Thanks" + username + "for logging in!"
         } else {
             return "Please enter the correct login information to proceed!"
