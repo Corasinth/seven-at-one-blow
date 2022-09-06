@@ -13,27 +13,50 @@ const resolvers = {
     },
 
     Mutation: {
-        // addUser: async (parent, args) => {
-        //     const user = await Player.create(args);
-        //     const token = signToken(user)
-
-        //     return {token, user};
-        // },
+        newPlayer: async (parent, args) => {
+            console.log('ARGS', args);
+            console.log('USERNAME', args.username);
+            const playerData = await Player.findOne({username:args.username})
+            console.log('USERDATA', userData)
+            if (!userData) {
+                const player = await Player.create(args);
+                const token = signToken(player);
+                console.log('STORY SAVE', player.storySave);
+                return {token, player};
+            }
+            return new AuthenticationError('That username is taken!')
+        },
 
         login: async (parent, {username, password}) => {
-            const userData = await Player.findOne({username});
-            if(!userData) {
-                throw new AuthenticationError('Incorrect Username');
+            const player = await Player.findOne({username});
+            if(!player) {
+                throw new AuthenticationError('No user found with the username! Want to signup?');
             }
-
-            const correctPass = await user.isCorrectPassword(password);
-
+            const correctPass = await player.isCorrectPassword(password);
             if(!correctPass) {
                 throw new AuthenticationError('Incorrect Password');
             }
-            
-            const token = signToken(user);
-            return {token, user};
+            const token = signToken(player);
+            return {token, player};
+        },
+
+        savePlayer: async (parent, {username, storySave, inventory}, context) => {
+            if (context.user) {
+                const player = await Player.find({ username });
+                player.storySave = storySave;
+                player.inventory = inventory;
+                await player.save();
+                return { player }
+            }
+            throw new AuthenticationError('Please log in to save your game');
+        },
+
+        loadSave: async (parent, {username}, context) => {
+            if (context.user) {
+                const player = await Player.find({ username });
+                return { player }
+            }
+            throw new AuthenticationError('Please log in to load your save.');
         }
     }
 };

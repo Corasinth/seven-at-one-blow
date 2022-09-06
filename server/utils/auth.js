@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const secret = 'luckyNeedle'
 const expiration = '24h';
 
-module.exports = module.exports = {
+module.exports = {
   authMiddleware: function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;
 
