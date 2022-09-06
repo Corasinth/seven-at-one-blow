@@ -19,6 +19,7 @@ function onUse (arg1, arg2, arg3) {
      }
  }
 
+ export default onUse
 //Some kind of query returns an array of item objects, a player object, and our one story object (see models)
 
 const keyObj = {};
