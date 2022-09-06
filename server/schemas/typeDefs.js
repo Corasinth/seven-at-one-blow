@@ -9,16 +9,16 @@ const typeDefs = gql`
         inventory: [String]
     }
 
-    type Chapter {
-        chapterName: String
-        chapterNumber: Int
-        numberOfStages: Int
-    }
-
     type Story {
       _id: ID
       chapters: [Chapter]
       textMatrix: [[String]]
+    }
+
+    type Chapter {
+        chapterName: String
+        chapterNumber: Int
+        numberOfStages: Int
     }
 
     type Item {
