@@ -16,7 +16,7 @@ const resolvers = {
         newPlayer: async (parent, args) => {
             console.log('ARGS', args);
             console.log('USERNAME', args.username);
-            const userData = await Player.findOne({username:args.username})
+            const playerData = await Player.findOne({username:args.username})
             console.log('USERDATA', userData)
             if (!userData) {
                 const player = await Player.create(args);
@@ -28,19 +28,16 @@ const resolvers = {
         },
 
         login: async (parent, {username, password}) => {
-            const userData = await Player.findOne({username});
-            if(!userData) {
-                throw new AuthenticationError('Incorrect Username');
+            const player = await Player.findOne({username});
+            if(!player) {
+                throw new AuthenticationError('No user found with the username! Want to signup?');
             }
-
-            const correctPass = await user.isCorrectPassword(password);
-
+            const correctPass = await player.isCorrectPassword(password);
             if(!correctPass) {
                 throw new AuthenticationError('Incorrect Password');
             }
-            
-            const token = signToken(user);
-            return {token, user};
+            const token = signToken(player);
+            return {token, player};
         }
     }
 };

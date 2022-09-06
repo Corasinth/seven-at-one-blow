@@ -1,13 +1,11 @@
 import { gql } from '@apollo/client';
 
 export const LOGIN = gql`
- mutation Mutation($username: String!, $password: String!) {
+mutation Mutation($username: String!, $password: String!) {
   login(username: $username, password: $password) {
     token
     player {
-      _id
       username
-      password
       storySave
       inventory
     }

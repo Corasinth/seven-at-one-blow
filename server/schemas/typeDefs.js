@@ -48,7 +48,6 @@ const typeDefs = gql`
         login(username:String!, password:String!): Auth
         savePlayer(username:String!, storySave: [Int]!, inventory:[String]!): Auth
         newPlayer(username:String!, password:String!): Auth
-
     }
 `
 module.exports = typeDefs;
