@@ -1,18 +1,19 @@
 import { LOGIN } from '../mutations.js'
 import { useMutation } from '@apollo/client'
-
-const [loginPlayer, { error, data }] = useMutation(LOGIN);
+import Auth from '../auth.js'
+// const [loginPlayer, { error, data }] = useMutation(LOGIN);
 
 function login(){
   // try {
-  //   const { data } = await loginPlayer( {variables: {username, password} } )   
+  //   const { data } = await loginPlayer( {variables: {username, password} } );
+  //   Auth.login(data.login.token);   
   // } catch (error) {
-  //     console.log(error)
+  //     console.log(error);
   // }
-  console.log("string");
+  // const [loginPlayer, { error, data }] = useMutation(LOGIN);
+  // console.log("string");
 }
 
-loginPlayer()
 
 export default login;
 
