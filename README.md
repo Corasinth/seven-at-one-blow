@@ -43,6 +43,8 @@ There will soon be a helper file to edit the existing item script coordinates pr
 
 This text-adventure is adapted from the fairy tale [The Brave Little Tailor](https://www.gutenberg.org/files/503/503-h/503-h.htm#link2H_4_0031), which can be found at the link. 
 
+The icon for this site was taken from [flaticon.io](https://www.flaticon.com/free-icons/sew)
+
 ### Technologies Used
 
 * MongoDB
