@@ -17,8 +17,6 @@ function onTake (arg1, arg2) {
 
 //Some kind of query returns an array of item objects, a player object, and our one story object (see models)
 
-const keyObj = {};
-
 function populateKeyObj (itemArray) {
     for (let item of itemArray) {
         keyObj[item.name] = item
@@ -109,26 +107,26 @@ keyObj = {
     //add others
 }
 
-const player = playerData
-const story = storyData 
+// const player = playerData
+// const story = storyData 
 
-function takeItemInteraction(args){
-    let currentStoryCoordinates = player.storySave 
-    let inInventory = player.inventory.includes(args[1]) //where args[1] is 'needle' or whatever the object is 
-}
+// function takeItemInteraction(args){
+//     let currentStoryCoordinates = player.storySave 
+//     let inInventory = player.inventory.includes(args[1]) //where args[1] is 'needle' or whatever the object is 
+// }
 
 
 
-function takeItemInteraction(args) {
-    for (name in keyObj) {
-        if (name === arg1) {
-            coordinates = keyObj[name].deliverScript(arg3)
-        }
-    }
-    if (coordinates === false){
-       return 'error'
-    }
-}
+// function takeItemInteraction(args) {
+//     for (name in keyObj) {
+//         if (name === arg1) {
+//             coordinates = keyObj[name].deliverScript(arg3)
+//         }
+//     }
+//     if (coordinates === false){
+//        return 'error'
+//     }
+// }
 
-module.exports = takeItemInteraction
+// module.exports = takeItemInteraction
   
