@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import Terminal from 'terminal-in-react';
 import itemInteraction from './utils/userCommands/useCmd'
 import takeItemInteraction from './utils/userCommands/takeCmd';
-import loginAccount from './utils/userCommands/loginCmd';
-class TermPackage extends Component {
+import login from './utils/userCommands/loginCmd';
+const PlayerContext = React.createContext();
 
+const player = { test: 'string' }
+
+class TermPackage extends Component {
     render() {
     return (
       <div
@@ -15,7 +18,8 @@ class TermPackage extends Component {
           height: "100vh"
         }}
       >
-        <Terminal
+      <PlayerContext.Provider value = { player }>
+        <Terminal 
         // automatically prints any text that is logged to the console
           watchConsoleLogging
           startState='maximised'
@@ -36,8 +40,8 @@ class TermPackage extends Component {
             // user commands
             'take': (args, print, runCommand) => {print(takeItemInteraction(args))},
             'use': (args, print, runCommand) => {print(itemInteraction(args))},
-            'signup': (args, print, runCommand) => {print(signUp(args))},
-            'login': (args, print, runCommand) => {print(loginAccount(args))},
+            'signup': (args, print, runCommand) => {print((args))},
+            'login': (args, print, runCommand) => {print(login(args))},
             'save': (args, print, runCommand) => {},
             'new-game': (args, print, runCommand) => {},
            
@@ -71,6 +75,7 @@ Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands t
   
 To get started use the command "new game", or "login" to restore your save. If you get stuck, use the command "help" to see a list of available commands'
         />
+      </PlayerContext.Provider>
       </div>
     );
   }
