@@ -17,7 +17,8 @@ const playerSchema = new Schema({
         default: [0,1]
     },
     inventory: {
-        type: [String]
+        type: [String],
+        default: []
     }
 });
 

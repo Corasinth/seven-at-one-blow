@@ -13,12 +13,19 @@ const resolvers = {
     },
 
     Mutation: {
-        // addUser: async (parent, args) => {
-        //     const user = await Player.create(args);
-        //     const token = signToken(user)
-
-        //     return {token, user};
-        // },
+        newPlayer: async (parent, args) => {
+            console.log('ARGS', args);
+            console.log('USERNAME', args.username);
+            const userData = await Player.findOne({username:args.username})
+            console.log('USERDATA', userData)
+            if (!userData) {
+                const player = await Player.create(args);
+                const token = signToken(player);
+                console.log('STORY SAVE', player.storySave);
+                return {token, player};
+            }
+            return new AuthenticationError('That username is taken!')
+        },
 
         login: async (parent, {username, password}) => {
             const userData = await Player.findOne({username});
