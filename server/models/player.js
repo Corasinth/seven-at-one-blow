@@ -1,8 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const saveSchema = new Schema({})
-
 const playerSchema = new Schema({
     username: {
         type: String,
