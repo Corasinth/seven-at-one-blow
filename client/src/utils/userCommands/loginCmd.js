@@ -4,9 +4,12 @@ import { useMutation } from '@apollo/client'
 const [loginPlayer, { error, data }] = useMutation(LOGIN);
 
 function login(){
-  try {
-    const { data } = await loginPlayer( {} )   
-  }
+  // try {
+  //   const { data } = await loginPlayer( {variables: {username, password} } )   
+  // } catch (error) {
+  //     console.log(error)
+  // }
+  console.log("string");
 }
 
 loginPlayer()
