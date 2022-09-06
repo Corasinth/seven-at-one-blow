@@ -25,14 +25,6 @@ class TermPackage extends Component {
           barColor='black'
           style={{ fontWeight: "bold", fontSize: "1em" }}
           commands={{
-            // lists the commands
-            'help': () => {console.log(`
-            new-game - starts a new game
-            login - restores your save
-            save - saves your progress
-            signup - create your account
-            `)},
-
             // user commands
             'take': (args, print, runCommand) => {print(itemInteraction(args))},
             'use': (args, print, runCommand) => {print(itemInteraction(args))},
@@ -44,15 +36,20 @@ class TermPackage extends Component {
             
 
             // this prints text the text to the terminal
-            // 'type-text': (args, print, runCommand) => {
-            //     const text = args.slice(1).join(' ');
-            //     print('THIS TEXT GETS DISPLAYED');
-            //     for (let i = 0; i < text.length; i += 1) {
-            //       setTimeout(() => {
-            //         runCommand(`edit-line ${text.slice(0, i + 1)}`);
-            //       }, 100 * i);
-            //     }
-            //   }
+            'help': (args, print, runCommand) => {
+                const text = args.slice(1).join(' ');
+                print(`
+new-game - starts a new game
+login - restores your save
+save - saves your progress
+signup - create your account
+`);
+                for (let i = 0; i < text.length; i += 1) {
+                  setTimeout(() => {
+                    runCommand(`edit-line ${text.slice(0, i + 1)}`);
+                  }, 100 * i);
+                }
+              }
             
           }}
 
