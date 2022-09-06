@@ -23,7 +23,6 @@ const playerSchema = new Schema({
     }
 });
 
-
 // hash password
 playerSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
@@ -32,6 +31,11 @@ playerSchema.pre('save', async function (next) {
     }
     next()
 });
+
+// custom method to compare and validate password for logging in
+playerSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
 const Player = model('Player', playerSchema);
 
