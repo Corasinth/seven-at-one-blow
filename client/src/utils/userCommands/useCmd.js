@@ -1,25 +1,6 @@
 import tempData from './tempItem.json'
 import tempStory from './tempStory.json'
 
-// function onUse (arg1, arg2, arg3) {
-//     // arg1 = needle
-//     // arg2 = on
-//     // arg3 = cloth
- 
-//     let coordinates 
-
-//     for (name in [1]) {
-//          if (name === arg1) {
-//              coordinates = keyObj[name].deliverScript(arg3)
-//          }
-//      }
-//      if (coordinates === false){
-//         return 'error'
-//      }
-//  }
-
- 
-
 
 const keyObj = {};
 
@@ -30,22 +11,13 @@ function populateKeyObj (itemArray) {
 }
 populateKeyObj(tempData)
 console.log(keyObj)
-// const tempJson = JSON.parse(tempData) 
-
-
-// const player = playerData
-// const story = storyData 
-
-// function itemInteraction(args){
-//     let currentStoryCoordinates = player.storySave 
-//     let inInventory = player.inventory.includes(args[1]) //where args[1] is 'needle' or whatever the object is 
-// }
 
 
 const player = {
     storySave: [0,0],
     inventory: []
 }
+
 
  function itemInteraction(args) {
     const chapter = player.storySave[0]
