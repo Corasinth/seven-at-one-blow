@@ -18,7 +18,7 @@ class TermPackage extends Component {
       >
         <Terminal
         // automatically prints any text that is logged to the console
-          watchConsoleLogging
+          // watchConsoleLogging
           startState='maximised'
           prompt='white'
           color='green'
@@ -31,11 +31,11 @@ class TermPackage extends Component {
             new-game - starts a new game
             login - restores your save
             save - saves your progress
-            signup -
+            signup - create your account
             `)},
 
             // user commands
-            'take': (args, print, runCommand) => {print(takeItemInteraction(args))},
+            'take': (args, print, runCommand) => {print(itemInteraction(args))},
             'use': (args, print, runCommand) => {print(itemInteraction(args))},
             'signup': (args, print, runCommand) => {print(signUp(args))},
             'login': (args, print, runCommand) => {print(loginAccount(args))},
@@ -45,15 +45,15 @@ class TermPackage extends Component {
             
 
             // this prints text the text to the terminal
-            'type-text': (args, print, runCommand) => {
-                const text = args.slice(1).join(' ');
-                print('THIS TEXT GETS DISPLAYED');
-                for (let i = 0; i < text.length; i += 1) {
-                  setTimeout(() => {
-                    runCommand(`edit-line ${text.slice(0, i + 1)}`);
-                  }, 100 * i);
-                }
-              }
+            // 'type-text': (args, print, runCommand) => {
+            //     const text = args.slice(1).join(' ');
+            //     print('THIS TEXT GETS DISPLAYED');
+            //     for (let i = 0; i < text.length; i += 1) {
+            //       setTimeout(() => {
+            //         runCommand(`edit-line ${text.slice(0, i + 1)}`);
+            //       }, 100 * i);
+            //     }
+            //   }
             
           }}
 

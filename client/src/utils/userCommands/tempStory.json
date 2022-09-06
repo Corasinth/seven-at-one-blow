@@ -1,0 +1,71 @@
+[
+   {
+      "chapters": [
+         {
+            "chapterName": "Discovering Greatness",
+            "chapterNumber": 0,
+            "numberOfStages": 6 
+         },
+         {
+            "chapterName": "The Trials of a Giant",
+            "chapterNumber": 1,
+            "numberOfStages": 4 
+         },
+         {
+            "chapterName": "A Royal Trifle",
+            "chapterNumber": 2,
+            "numberOfStages": 0 
+         },
+         {
+            "chapterName": "The Narrow Escape",
+            "chapterNumber": 3,
+            "numberOfStages": 2 
+         },
+         {
+            "chapterName": "Regal Resolve",
+            "chapterNumber": 4,
+            "numberOfStages": 1 
+         }
+      ],
+      "textMatrix": [
+         [
+            "The morning is bright and the day is warm. You are a tailor who has been working hard with needle and cloth since dawn. At your door there is a woman selling strawberry jam. (Type the command “take jam” to progress)",
+            "You buy a jar of jam and spread it on some bread. You deserve a break. You see the cloth that still needs to be cut, the seams that still need to be sewn. You know that this is not the time to indulge. (Type the command “use needle on cloth” to progress. This ends the tutorial.)",
+            "After you’ve finished your work, you return to the jam only to find no fewer than seven flies feasting on the sweet jam. You swell with rage, justified, vengeful rage, against the flies.",
+            "You grab a strip of the nearby cloth and swat the flies. The cloth makes a satisfying THWACK. Impressively, you’ve managed to kill the flies in a single blow. All seven of them lie squashed and defeated. That’s what justice looks like. The world should know about your great feat. You think long and hard about the best way to show off your achievement to the world.",
+            "You embroider the phrase “Seven At One Blow” onto the belt to let the world know of your bravery and skill. Fastening the belt about your waist you prepare to set out into the world so that everyone can see who you’ve become.\nBefore you go, you look around your small house. You see the cloth heaped on the table, your favorite needle, and remember the toil you faced when you were just a tailor. You see the wheel of cheese that you were planning on using for lunch, the slice of bread soiled by those flies before you could take care of them, and a small bird in the birdhouse just outside your window that will probably miss you when you leave. And you see nothing else. Yes, being a tailor was difficult, but now it’s time to show the world what you can really do. But first, you should take some items to prepare for the journey ahead.",
+            "You grab the wheel of cheese and keep it in your pocket for later.",
+            "You lunge out the window, your finely-honed tailor reflexes snatching the bird before it can fly away, and keep it in your pocket for later.",
+            "You take your favorite needle with you; it’s always brought your good luck before! You slide it into the hem of your shirt for later."
+         ],
+         [
+            "You head out of town, your belt on your waist, a (bird)song in your pocket, and delighted to meet the world. And once out of town, the first part of the world you meet is a giant sitting on an enormous boulder. You cheerfully introduce yourself and ask the giant if he would like to accompany you on your journey. In response, the giant insults you.",
+            "The giant is astonished that as stripling like you could slay seven with a single blow. You assure him that your strength is no empty brag, and he challenges you to prove it. Picking up a rock, the giant squeezes it in one enormous fist until the water trapped in the stone trickles out, and challenges you to beat that, if you can.",
+            "That display of strength is like nothing to you. You pull out your wheel of cheese and crush it in your hand until a flood of whey pours out of it, much more liquid than the giant could produce.\nAstonished, the giant challenges you again. He picks up the biggest boulder he can find and tosses it into the air, and out of sight. Several seconds later, you both hear the crash of tree branches snapping as the boulder smashes down somewhere out of sight.",
+            "That giant is a real weakling. Sure, he threw a rock, but it still landed. To prove you’re better, you throw your bird into the sky. Happy to do its part the bird immediately flies away and out of sight. In vain, the giant listens for the sound of it landing, but it never comes. You smile confidently at the giant. Undoubtedly awed by your greatness, the giant invites you to stay with him and his family. Filled with an adventurous spirit you agree to stay with him. At his house, the giant offers you an enormous bed in which to stay the night and then goes to sleep himself. You stare up at the bed. Franly, the floor looks cozier, and easier to reach.",
+            "The bed you’ve been given is simply too big for you. You decid to sleep in the corner of the room instead. In the middle of the night, you wake up to an enormous smashing sound and see that the giant smashed an iron bar against the bed, probably out of fear to what you could do to him. The next morning when you wake up, the giants are shocked to see you alive and flee. They simply couldn’t handle your greatness.",
+            "You struggle and sweat, but eventually you climb up into the bed and fall asleep, lost in its vastness. That night, you wake up briefly to a horrible crashing sound and great pain. It seems the giant didn’t like you after all, and he decided to crush you while you were sleeping.\nGAME OVER"
+         ],
+         [
+            "After days of travel, you approach a city and fall asleep in the royal gardens. While asleep, many people notice you lying there and read your belt. Impressed by your apparent ability to slay 7 men in a single blow the citizens made a report to the king about the great warrior resting in the garden.Pleased to find such a warrior, the king offers you a position in his army. You of course accept, and with your belt quickly gain a reputation as the greatest warrior in the country.\nHowever, the soldiers who serve you start to grow fearful of your might and envious of your advancement. They complain to the king that you’re too great a risk to keep around; what if you get angry and slay 7 men with every blow? Troubled, the king comes up with a plan to get rid of you…\nYou are tasked with slaying two giants that have been terrorizing the countryside. To ensure your cooperation, the king promises you the princess’s hand in marriage and half of the kingdom in dowry. Of course, such a task is trivial for you, and you hastily agree before the king can change his mind. Fitted with the finest armor and weapons, you set off to slay two giants.",
+            "Upon locating the giant’s camp, you find the giants sleeping against trees on opposite sides of the courtyard. Around them are a pile of bones and hot coals from a recently lit fire. You quickly devise a plan of attack.",
+            "You stuff the animal bones in your satchel.",
+            "You quietly hide yourself in a nearby tree and throw a bone at the first of the giants. It hits him in the eye, and he wakes up extremely unhappy. Assuming the other giant threw the bone and is pretending to be asleep, the first giant loudly accuses him, and soon the two giants are quarreling. Unable to settle the argument however, and still tired, they go back to sleep.",
+            "You throw a bone at the second giant again. This time the quarrel is much longer and the giants stand up and walk around the clearing animatedly. Unable to get the other to admit anything, they sit down facing away from each other, furious.",
+            "You throw a bone at the first giant. In a rage, he stands up, stomps over to the second giant, and punches him. The giants begin to fight violently, in their anger tearing up trees to hit each other with. Each punch infuriates the other more until finally, both giants beat each other to death.",
+            "Having provoked the two giants to fight and kill each other, all you need to do is make it look like you killed them both…",
+            "Using your sword, you slash the bodies of the giants and blood spewed everywhere. Covered in the blood of giants, you report back to the king’s men and they confirm that you have slayed the giants. With your head held high, you approach the king in search of your reward.",
+            "You draw your blade, full of confidence and might, and charge the giants with a mighty bellow. Your voice cracks a little, but you don’t stop until you bounce off the giant you charged. Awake, and furious at being attacked by such a small creature, the giant grasps you in its hands and crushes your bones. GAME OVER"
+         ],
+         [
+            "Forced to admit that you met his challenge, the king is unhappy, but doesn’t show it. Instead, he commends you on your success, and asks you to do one final task before he can allow you to marry his daughter. For him, you must capture a unicorn that has been spotted in the area, but which has gored everyone who has chased it before. Obviously, you accept the mission, trivial as it is. The king’s advisor hands you a spear and you make your way to the woodlands and search for hours. Just as you were about to give up, you heard the crackle of a stick breaking. You definitely aren’t frightened, but you do accidentally drop the spear for unrelated reasons as you see the unicorn lunging in your direction. Knowing that you don’t have time to pick up the spear, you looked for a way to save yourself. Behind you is a grand oak tree, and at your waist, a dagger.",
+            "The unicorn lunges at you and quick as a whip you decide to boldly climb the tree away from the murderous horse. Unable to stop its charge, the unicorn slams into the trunk of the tree below. It is stuck fast, as was the plan all along. Now you just need to capture it.",
+            "You tie some rope around the unicorn's neck, and then some more for good measure. Having restrained the unicorn, you hack out a chunk of the tree, leaving the horn safely embedded in the old wood, and lead the unicorn back to the castle."
+         ],
+         [
+            "Having captured the unicorn, slain the giants, proven your strength, and felled seven with one blow the king is forced to allow you to marry his daughter and rule half his kingdom. The wedding is quickly arranged and you are finally able to take your rightful position in the realm as a king. For centuries the tales of the man who slayed seven with one blow were passed down from generation to generation. The glory of the brave little tailor lives on.\nTHE END",
+            "SECRET ENDING: Somewhere between the wedding and your eternal gloyry, you notice that the king’s robes, while splendid, have a small tear. The king has been most generous, so you offer to have them fixed. The king of course assumes you will hire a tailor, and accepts. That night, you fix his robes with your lucky needle, and present them to him the next day. The king wears them proudly. Unfortunately, a loose thread near the foot tangles in the king’s royal footwear in exactly the wrong way, tripping him. The king falls down some stairs and breaks his neck. Absent a ruler and an official successor, you take control of the entire kingdom and rule as you please, your fearsome reputation ensuring that no one dares challenge you for the rest of time. "
+         ]
+      ]
+   }
+]
