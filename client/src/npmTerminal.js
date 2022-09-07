@@ -3,6 +3,7 @@ import Terminal from 'terminal-in-react';
 import itemInteraction from './utils/userCommands/itemInteractionCmd';
 import newPlayer from './utils/userCommands/newPlayerCmd';
 import login from './utils/userCommands/loginCmd';
+import newGame from './utils/userCommands/newGameCmd';
 
 
 import { STORY_INFO } from './utils/queries';
@@ -107,8 +108,10 @@ class TermPackage extends Component {
               let state = this.loadSaveRequest()
               //Call a function here to print out the correct text based on the current state.player.storySave etc. 
               },
-            'new-game': (args, print, runCommand) => { },
-
+            'new-game': (args, print, runCommand) => {
+              print(newGame(args, runCommand))
+              runCommand('clear')              
+            },
             // this prints text the text to the terminal
             'help': (args, print, runCommand) => {
               const text = args.slice(1).join(' ');
@@ -123,8 +126,7 @@ signup - create your account
                   runCommand(`edit-line ${text.slice(0, i + 1)}`);
                 }, 100 * i);
               }
-            }
-
+            } 
           }}
 
 
