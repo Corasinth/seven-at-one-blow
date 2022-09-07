@@ -2,12 +2,12 @@ import React, { Component, createContext, useContext } from 'react';
 import Terminal from 'terminal-in-react';
 import itemInteraction from './utils/userCommands/useCmd'
 import takeItemInteraction from './utils/userCommands/takeCmd';
-import login from './utils/userCommands/loginCmd';
+// import login from './utils/userCommands/loginCmd';
 
-const playerContext = createContext();
-const usePlayerContext = () => {useContext(playerContext)};
+// const PlayerContext = createContext();
+// const usePlayerContext = () => {useContext(PlayerContext)};
 
-const player = { test: 'string' }
+// const player = { test: 'string' }
 
 class TermPackage extends Component {
     render() {
@@ -20,7 +20,7 @@ class TermPackage extends Component {
           height: "100vh"
         }}
       >
-      <PlayerContext.Provider value = { player }>
+      {/* <PlayerContext.Provider value = { player }> */}
         <Terminal 
         // automatically prints any text that is logged to the console
           watchConsoleLogging
@@ -77,7 +77,7 @@ Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands t
   
 To get started use the command "new game", or "login" to restore your save. If you get stuck, use the command "help" to see a list of available commands'
         />
-      </PlayerContext.Provider>
+      {/* </PlayerContext.Provider> */}
       </div>
     );
   }
