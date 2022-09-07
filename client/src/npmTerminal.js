@@ -53,6 +53,7 @@ signup - create your account
                   }, 100 * i);
                 }
               }
+              
             
           }}
 
@@ -72,6 +73,7 @@ Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands t
 To get started use the command "new game", or "login" to restore your save. If you get stuck, use the command "help" to see a list of available commands'
         />
       {/* </PlayerContext.Provider> */}
+      
       </div>
     );
   }
