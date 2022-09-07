@@ -10,7 +10,6 @@ function populateKeyObj (itemArray) {
     }
 }
 populateKeyObj(tempData)
-console.log(keyObj)
 
 
 const player = {
@@ -25,8 +24,6 @@ const player = {
     const inInventory = player.inventory.includes(args[1])
     const optionalTargetItem = args[3]
     let dialogue
-    console.log(typeof player.storySave[0])
-
 
     for (let key in keyObj) {
         if (key === args[1]) {
@@ -47,7 +44,6 @@ const player = {
     const playerArr = player.storySave
     player.storySave = [playerArr[0], playerArr[1] + 1]    
     //change temp story to story.chapters
-    console.log(tempStory[0])
     if (player.storySave[1] === tempStory[0].chapters[player.storySave[0]].numberOfStages) {
         const playerChapt = player.storySave
         player.storySave = [playerChapt[0] + 1, 0]
