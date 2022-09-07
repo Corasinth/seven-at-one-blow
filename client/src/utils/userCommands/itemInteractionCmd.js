@@ -1,74 +1,73 @@
-import tempData from './tempItem.json'
-import tempStory from './tempStory.json'
-
-
-const keyObj = {};
-
-function populateKeyObj (itemArray) {
-    for (let item of itemArray) {
-        keyObj[item.name] = item
+ function itemInteraction(initialArgs, state) {
+    const story = state.story;
+    const items = state.items; 
+    let player = state.player;
+    
+    if (!player.storySave) {
+        return ['Please log in or sign up before trying to play the game!']
     }
-}
-populateKeyObj(tempData)
 
+    const args = initialArgs.map((arg)=>arg.toLowerCase());
 
-const player = {
-    storySave: [0,0],
-    inventory: []
-}
-
-
- function itemInteraction(args) {
     const chapter = player.storySave[0]
     const stage = player.storySave[1]
     const inInventory = player.inventory.includes(args[1])
     const optionalTargetItem = args[3]
     let dialogue
 
-    for (let key in keyObj) {
-        if (key === args[1]) {
-            dialogue = deliverScript(keyObj[key], chapter, stage, inInventory, optionalTargetItem)
+    for (let item of items){
+        if (item.name === args[1]) {
+            dialogue = deliverScript(story, item, chapter, stage, inInventory, optionalTargetItem)
+            console.log('What dialogue returns: ', dialogue)
             if (dialogue){
-                playerObjUpdater(args[0], args[1])
-                console.log(typeof dialogue)
-                console.log(dialogue)
-                return dialogue
+                console.log('We are calling player updater now', player)
+                player = playerObjUpdater(args[0], args[1], story, player)
+                console.log('and after the player looks like this', player)
+                return [dialogue, player]
              } else {
-                return 'You cannot use that here!'
+                return ['You cannot use that here.']
              }
         }
      }     
+     return [`That does not seem like something you can ${args[0]}.`]
 }
 
- function playerObjUpdater(interactParam, objName){
+ function playerObjUpdater(interactParam, objName, story, player){
     const playerArr = player.storySave
-    player.storySave = [playerArr[0], playerArr[1] + 1]    
-    //change temp story to story.chapters
-    if (player.storySave[1] === tempStory[0].chapters[player.storySave[0]].numberOfStages) {
+    console.log ('at start', player)
+    if (interactParam === 'take') {
+        player.inventory.push(objName);
+    }
+    
+    if (!(objName === 'needle') || !(interactParam === 'take')) {
+        console.log('arr before', playerArr)
+        player.storySave = [playerArr[0], playerArr[1] + 1]    
+        console.log('arr after', playerArr)
+    }
+    
+    if (player.storySave[1] === story.chapters[player.storySave[0]].numberOfStages) {
         const playerChapt = player.storySave
         player.storySave = [playerChapt[0] + 1, 0]
         // add a function to deploy a new chapter
     }
-
-    if (interactParam === 'take') {
-        player.inventory.push
-    }
+    console.log ('at end', player)
+    return player 
  }
 
 
-function deliverScript (item, chapter, stage, inInventory, optionalTargetItem) {
+function deliverScript (story, item, chapter, stage, inInventory, optionalTargetItem) {
     //Check the relevant stages matrix on the item object for any matches, and set the script coordinates to the returned position if there is a match 
-    let regularPosition = checker (item.relevantStages, chapter, stage, optionalTargetItem);
+    let regularPosition = checker(item.relevantStages, chapter, stage, optionalTargetItem);
     let coordinates = item.scriptCoordinates[regularPosition];
     let finalString
     //If the incoming chapter and stage turn up no results in the regular stages, we check the inventory stages and overwrite the result
     if (inInventory && !coordinates) {
-        let inventoryPosition = checker (item.requiredInInventoryStages, chapter, stage, optionalTargetItem);
+        let inventoryPosition = checker(item.requiredInInventoryStages, chapter, stage, optionalTargetItem);
         coordinates = item.inventoryScriptCoordinates[inventoryPosition];
     }
  
     if (coordinates) {
-        finalString = tempStory[0].textMatrix [coordinates[0]][coordinates[1]]
+        finalString = story.textMatrix[parseInt(coordinates[0])][parseInt(coordinates[1])]
     } 
     return finalString || false;
 };
@@ -78,7 +77,7 @@ function checker (matrixToCheck, chapter, stage, optionalTargetItem) {
     //Checks the incoming current chapter and stage against the item's relevantStages
     for (let i = 0; i < matrixToCheck.length; i++) {
         //If a match is found, checks if there's something this item needs to be used on, and if so makes sure that item has also been passed in 
-        if (matrixToCheck[i][0] === chapter && matrixToCheck[i][1] === stage) {
+        if (matrixToCheck[i][0] == chapter && matrixToCheck[i][1] == stage) {
             if (matrixToCheck[i][2]) {
                 if (matrixToCheck[i][2] === optionalTargetItem) {
                     position = i;
@@ -94,4 +93,4 @@ function checker (matrixToCheck, chapter, stage, optionalTargetItem) {
     return position; 
 }
 
-export default itemInteraction
+export default itemInteraction;

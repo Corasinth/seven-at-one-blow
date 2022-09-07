@@ -14,11 +14,15 @@
         "name":"needle",
         "relevantStages":[
             ["0", "1", "cloth"],
-            ["0", "3", "cloth"]
+            ["0", "3", "cloth"],
+            ["0", "4"],
+            ["0", "5"]
         ],
         "scriptCoordinates":[
             ["0", "2"],
-            ["0", "4"]
+            ["0", "4"],
+            ["0", "7"],
+            ["0", "7"]
         ],
         "requiredInInventoryStages":[
             ["4", "0", "king"]

@@ -84,8 +84,20 @@ class TermPackage extends Component {
           style={{ fontWeight: "bold", fontSize: "1em" }}
           commands={{
             // user commands
-            'take': (args, print, runCommand) => { print(itemInteraction(args, this.state)) },
-            'use': (args, print, runCommand) => { print(itemInteraction(args, this.state)) },
+            'take': (args, print, runCommand) => { 
+              let returnArr = itemInteraction(args, this.state)
+              if (returnArr[1]){
+                this.state.player = returnArr[1];
+              }
+              print (returnArr[0]);
+            },
+            'use': (args, print, runCommand) => { 
+              let returnArr = itemInteraction(args, this.state)
+              if (returnArr[1]){
+                this.state.player = returnArr[1];
+              }
+              print (returnArr[0]);
+            },
             'signup': (args, print, runCommand) => { 
               print(this.newPlayerRequest(args))
             },
