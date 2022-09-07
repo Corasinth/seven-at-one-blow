@@ -15,6 +15,7 @@ You can play the game [here](https://seven-at-one-blow.herokuapp.com/).
 * [Contributing](#contributing)
 * [Credits](#credits)
 * [License](#license)
+* [Contact](#contact)
 
 
 ## Installation
@@ -67,5 +68,10 @@ This website uses the open-source MIT License.
 <details><summary>Chapter 3 — A Royal Trifle</summary>take bones, use bones on giant, use bones on giant, use bones on giant, use bones on giant, use sword on giant</details>
 <details><summary>Chapter 4 — The Narrow Escape</summary>use tree, use rope</details>
 <details><summary>Chapter 5 — The Regal Resolve</summary>none?</details>
+
+## Contact
+* [Abdur-Rauf Ahmed](https://github.com/Corasinth/)
+* [Tim Sasse](https://github.com/timcs1274/)
+* [Austin Park](https://github.com/apark0819/)
 
 --- 
