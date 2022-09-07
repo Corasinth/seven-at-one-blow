@@ -33,8 +33,6 @@ const player = {
             dialogue = deliverScript(keyObj[key], chapter, stage, inInventory, optionalTargetItem)
             if (dialogue){
                 playerObjUpdater(args[0], args[1])
-                console.log(typeof dialogue)
-                console.log(dialogue)
                 return dialogue
              } else {
                 return 'You cannot use that here!'
@@ -51,7 +49,11 @@ const player = {
     if (player.storySave[1] === tempStory[0].chapters[player.storySave[0]].numberOfStages) {
         const playerChapt = player.storySave
         player.storySave = [playerChapt[0] + 1, 0]
-        // add a function to deploy a new chapter
+        // function to deploy a new chapter
+        // function chapterGenerator () {
+        //     if (player.storySave[0] === tempStory[0].chapters[player.storySave[0]].numberOfStages) {
+        //     } 
+        // }
     }
 
     if (interactParam === 'take') {
