@@ -1,11 +1,6 @@
 import React, { Component, createContext, useContext } from 'react';
 import Terminal from 'terminal-in-react';
 import itemInteraction from './utils/userCommands/useCmd'
-import takeItemInteraction from './utils/userCommands/takeCmd';
-// import login from './utils/userCommands/loginCmd';
-
-// const PlayerContext = createContext();
-// const usePlayerContext = () => {useContext(PlayerContext)};
 
 // const player = { test: 'string' }
 
@@ -23,7 +18,7 @@ class TermPackage extends Component {
       {/* <PlayerContext.Provider value = { player }> */}
         <Terminal 
         // automatically prints any text that is logged to the console
-          watchConsoleLogging
+          // watchConsoleLogging
           startState='maximised'
           prompt='white'
           color='green'
@@ -31,16 +26,8 @@ class TermPackage extends Component {
           barColor='black'
           style={{ fontWeight: "bold", fontSize: "1em" }}
           commands={{
-            // lists the commands
-            'help': () => {console.log(`
-            new-game - starts a new game
-            login - restores your save
-            save - saves your progress
-            signup -
-            `)},
-
             // user commands
-            'take': (args, print, runCommand) => {print(takeItemInteraction(args))},
+            'take': (args, print, runCommand) => {print(itemInteraction(args))},
             'use': (args, print, runCommand) => {print(itemInteraction(args))},
             'signup': (args, print, runCommand) => {print((args))},
             'login': (args, print, runCommand) => {print(login(args))},
@@ -50,9 +37,14 @@ class TermPackage extends Component {
             
 
             // this prints text the text to the terminal
-            'type-text': (args, print, runCommand) => {
+            'help': (args, print, runCommand) => {
                 const text = args.slice(1).join(' ');
-                print('THIS TEXT GETS DISPLAYED');
+                print(`
+new-game - starts a new game
+login - restores your save
+save - saves your progress
+signup - create your account
+`);
                 for (let i = 0; i < text.length; i += 1) {
                   setTimeout(() => {
                     runCommand(`edit-line ${text.slice(0, i + 1)}`);
