@@ -63,11 +63,11 @@ This website uses the open-source MIT License.
 ## Spoilers!
 *We know that it can be tough figuring out the commands, so we've included a cheatsheet for each Chapter*
 
-<details><summary>Chapter 1 — Discovering Greatness</summary>use needle on cloth, use cloth on flies, use needle on cloth, take cheese, take bird</details>
-<details><summary>Chapter 2 — The Trials of a Giant</summary>use belt, use cheese, use bird, branches?!?!?!?!?, use floor, use bed</details>
+<details><summary>Chapter 1 — Discovering Greatness</summary>take jam, use needle on cloth, use cloth on flies, use needle on cloth, take cheese, take bird</details>
+<details><summary>Chapter 2 — The Trials of a Giant</summary>use belt, use cheese, use bird, use floor</details>
 <details><summary>Chapter 3 — A Royal Trifle</summary>take bones, use bones on giant, use bones on giant, use bones on giant, use bones on giant, use sword on giant</details>
 <details><summary>Chapter 4 — The Narrow Escape</summary>use tree, use rope</details>
-<details><summary>Chapter 5 — The Regal Resolve</summary>none?</details>
+<details><summary>Chapter 5 — The Regal Resolve</summary></details>
 
 ## Contact
 * [Abdur-Rauf Ahmed](https://github.com/Corasinth/)
