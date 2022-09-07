@@ -1,0 +1,17 @@
+import React, { createContext, useContext } from 'react';
+
+// Initialize new context for students
+const PlayerContext = createContext();
+
+// We create a custom hook to provide immediate usage of the student context in other components
+export const usePlayerContext = () => useContext(PlayerContext);
+
+// StudentProvider component that holds initial state, returns provider component
+export const playerProvider = ({ children }) => {
+  const player = {
+    test: 'string'
+  }
+};
+
+
+// export default usePlayerContext;

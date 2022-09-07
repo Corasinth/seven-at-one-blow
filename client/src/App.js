@@ -3,6 +3,7 @@ import React from 'react';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import './App.css';
 import TermPackage from './npmTerminal';
+import login from './utils/userCommands/loginCmd'
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -13,7 +14,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <main>
-        <p>Hello World</p>
+      
         <div><TermPackage/></div>
       </main>
     </ApolloProvider>
