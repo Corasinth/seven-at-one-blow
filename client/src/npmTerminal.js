@@ -1,6 +1,7 @@
 import React, { Component, createContext, useContext } from 'react';
 import Terminal from 'terminal-in-react';
 import itemInteraction from './utils/userCommands/useCmd'
+import newGame from './utils/userCommands/newGameCmd';
 
 // const player = { test: 'string' }
 
@@ -17,8 +18,6 @@ class TermPackage extends Component {
       >
       {/* <PlayerContext.Provider value = { player }> */}
         <Terminal 
-        // automatically prints any text that is logged to the console
-          // watchConsoleLogging
           startState='maximised'
           prompt='white'
           color='green'
@@ -32,7 +31,10 @@ class TermPackage extends Component {
             'signup': (args, print, runCommand) => {print((args))},
             'login': (args, print, runCommand) => {print(login(args))},
             'save': (args, print, runCommand) => {},
-            'new-game': (args, print, runCommand) => {},
+            'new-game': (args, print, runCommand) => {
+              print(newGame(args, runCommand))
+              runCommand('clear')              
+            },
            
             
 
