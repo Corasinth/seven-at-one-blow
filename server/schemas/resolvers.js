@@ -14,11 +14,9 @@ const resolvers = {
 
     Mutation: {
         newPlayer: async (parent, args) => {
-            console.log('ARGS', args);
-            console.log('USERNAME', args.username);
             const playerData = await Player.findOne({username:args.username})
-            console.log('USERDATA', userData)
-            if (!userData) {
+            if (!playerData) {
+                console.log('No existing user by that name')
                 const player = await Player.create(args);
                 const token = signToken(player);
                 console.log('STORY SAVE', player.storySave);

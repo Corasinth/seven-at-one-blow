@@ -24,10 +24,10 @@ const typeDefs = gql`
     type Item {
         _id: ID!
         name: String!
-        relevantStages: [[Int]]
-        scriptCoordinates: [[Int]]
-        requiredInInventoryStages: [[Int]]
-        inventoryScriptCoordinates: [[Int]]
+        relevantStages: [[String]]
+        scriptCoordinates: [[String]]
+        requiredInInventoryStages: [[String]]
+        inventoryScriptCoordinates: [[String]]
     }
 
     type Auth {

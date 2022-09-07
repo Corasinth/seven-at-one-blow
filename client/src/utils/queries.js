@@ -1,14 +1,17 @@
-import { gql } from '@apollo/client';
+import {gql} from '@apollo/client';
 
 export const STORY_INFO = gql`
-query getStoryInfo {
+query Query {
   getStoryInfo {
     story {
+      chapters {
+        chapterName
+        chapterNumber
+        numberOfStages
+      }
       textMatrix
-      _id
     }
     items {
-      _id
       name
       relevantStages
       scriptCoordinates

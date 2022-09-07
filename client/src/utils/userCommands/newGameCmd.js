@@ -1,20 +1,14 @@
-import tempStory from './tempStory.json'
-
-const player = {
-    storySave: [0,0],
-    inventory: []
-}
-
 // line 53 of useCmd.js
-function chapterGenerator () {
-    if (player.storySave[0] === tempStory[0].chapters[player.storySave[0]].numberOfStages) {
+function chapterGenerator (story) {
+    if (player.storySave[0] === story.chapters[player.storySave[0]].numberOfStages) {
     } 
 }
 
-function newGame() {
-    const newSave = player.storySave
+function newGame(args, runCommand, state) {
+    const newSave = state.player.storySave;
+    const story = state.story;
     player.storySave = [newSave[0], newSave[0]]
-    chapterGenerator()
+    chapterGenerator(story)
 }
 
 
