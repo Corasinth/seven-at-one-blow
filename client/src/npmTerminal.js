@@ -109,7 +109,7 @@ class TermPackage extends Component {
               //Call a function here to print out the correct text based on the current state.player.storySave etc. 
               },
             'new-game': (args, print, runCommand) => {
-              print(newGame(args, runCommand))
+              print(newGame(args, runCommand, this.state))
               runCommand('clear')              
             },
             // this prints text the text to the terminal
