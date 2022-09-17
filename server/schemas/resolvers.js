@@ -15,6 +15,7 @@ const resolvers = {
     Mutation: {
         newPlayer: async (parent, args) => {
             const playerData = await Player.findOne({username:args.username})
+            console.log('Hello???')
             if (!playerData) {
                 console.log('No existing user by that name')
                 const player = await Player.create(args);

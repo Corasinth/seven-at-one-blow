@@ -1,16 +1,12 @@
-import React, { Component, createContext, useContext } from 'react';
+import React, { Component } from 'react';
 import Terminal from 'terminal-in-react';
-import itemInteraction from './utils/userCommands/itemInteractionCmd';
-import newPlayer from './utils/userCommands/newPlayerCmd';
-import login from './utils/userCommands/loginCmd';
-import newGame from './utils/userCommands/newGameCmd';
-
-
-import { STORY_INFO } from './utils/queries';
-import { request } from 'graphql-request'
 import ENDPOINT from './utils/queryEndpoint';
-import { LOAD_SAVE, LOGIN, NEW_PLAYER, SAVE_PLAYER } from './utils/mutations';
-import Auth from './utils/auth'
+import { request } from 'graphql-request';
+import { STORY_INFO } from './utils/queries'
+import { NEW_PLAYER, LOGIN } from './utils/mutations';
+import commands from './utils/commands-and-functions/index'
+
+// import Auth from '../auth';
 
 class TermPackage extends Component {
   state = {
@@ -18,49 +14,11 @@ class TermPackage extends Component {
     items: [],
     story: {}
   }
+
   componentDidMount() {
     request(ENDPOINT, STORY_INFO).then((data) => {
       this.setState({ items: data.getStoryInfo.items, story: data.getStoryInfo.story });
     })
-  }
-  newPlayerRequest = (args) => {
-      request(ENDPOINT, NEW_PLAYER, { username:args[1], password:args[2] }).then((response) => {
-        // Auth.login(response.newPlayer.player.token);
-        this.setState({ player: response.newPlayer.player });
-        console.log(this.state)
-        return `Welcome ${this.state.player.username}!`
-      }).catch((err)=>{
-        console.log(err)
-        return false
-      })
-  }
-  loginRequest = (username, password) => {
-    request(ENDPOINT, LOGIN, {username, password}).then((response) => {
-      console.log(response)
-      this.setState({ player: response.login.player });
-      console.log(this.state)
-    }).catch((err)=>{
-        console.log(err)
-        return false
-      })
-  }
-  saveRequest = () => {
-    let player = this.state.player;
-    request(ENDPOINT, SAVE_PLAYER, {username: player.username, storySave: player.storySave, inventory: player.inventory }).then((response) => {
-      console.log(response)
-    }).catch((err)=>{
-        console.log(err)
-        return false
-      })
-  }
-  loadSaveRequest = () => {
-    request(ENDPOINT, LOAD_SAVE, {username: this.state.player.username}).then((response) => {
-      console.log(response)
-      return (this.state)
-    }).catch((err)=>{
-        console.log(err)
-        return false
-      })
   }
 
   render() {
@@ -85,48 +43,82 @@ class TermPackage extends Component {
           style={{ fontWeight: "bold", fontSize: "1em" }}
           commands={{
             // user commands
-            'take': (args, print, runCommand) => { 
-              let returnArr = itemInteraction(args, this.state)
-              if (returnArr[1]){
-                this.state.player = returnArr[1];
+            'take': (args, print, runCommand) => {
+              let response = itemInteraction(args, this.state, this.setState)
+              print(response[0]);
+              this.setState({ player: response[1] })
+              commands.generateChapter(this.state, false)
+            },
+            'use': (args, print, runCommand) => {
+              let response = itemInteraction(args, this.state)
+              print(response[0]);
+              this.setState({ player: response[1] })
+              commands.generateChapter(this.state, false)
+            },
+            'signup': (args, print, runCommand) => {
+              let username = args[1];
+              let password = args[2];
+              if (!username || !password) {
+                print('Please enter both a username and password');
+                return;
               }
-              print (returnArr[0]);
+              request(ENDPOINT, NEW_PLAYER, { username, password }).then((response) => {
+                this.setState(response.newPlayer.player)
+                const welcomeStr = `Welcome ${response.newPlayer.player.username}!`;
+                print(welcomeStr);
+              }).catch((err) => {
+                console.log(err)
+                print(err["response"]["errors"][0]["message"])
+              })
             },
-            'use': (args, print, runCommand) => { 
-              let returnArr = itemInteraction(args, this.state)
-              if (returnArr[1]){
-                this.state.player = returnArr[1];
+            'login': (args, print, runCommand) => {
+              let username = args[1];
+              let password = args[2];
+              if (!username || !password) {
+                print('Please enter both a username and password');
+                return;
               }
-              print (returnArr[0]);
+              request(ENDPOINT, LOGIN, { username, password }).then((response) => {
+                console.log(response)
+                this.setState({ player: response.login.player });
+                const welcomeStr = `Welcome ${response.login.player.username}!`;
+                print(welcomeStr);
+                setTimeout(()=>{
+                  commands.generateChapter(this.state, print, true)
+                }, 2000)
+              }).catch((err) => {
+                console.log(err)
+                print(err["response"]["errors"][0]["message"])
+              })
             },
-            'signup': (args, print, runCommand) => { 
-              print(this.newPlayerRequest(args))
+            'save': (args, print, runCommand) => { print(save(this.state)) },
+            'load': (args, print, runCommand) => {
+              this.setState({ player: commands.load(this.state.player) })
+              commands.generateChapter(this.state, print, true)
             },
-            'login': (args, print, runCommand) => { print(login(args, this.loginRequest)) },
-            'save': (args, print, runCommand) => { print(this.saveRequest()) },
-            'load': (args, print, runCommand) => { 
-              let state = this.loadSaveRequest()
-              //Call a function here to print out the correct text based on the current state.player.storySave etc. 
-              },
             'new-game': (args, print, runCommand) => {
-              print(newGame(args, runCommand, this.state))
-              runCommand('clear')              
+              this.setState({ player: { storySave: [0, 0] } })
+              runCommand('clear')
+              commands.generateChapter(this.state, print, false);
             },
             // this prints text the text to the terminal
             'help': (args, print, runCommand) => {
               const text = args.slice(1).join(' ');
               print(`
-new-game - starts a new game
-login - restores your save
-save - saves your progress
-signup - create your account
+  signup - create your account with this command followed by your desired username and password
+  login - login and restore your save with this command followed by your username and password
+  new-game - starts a new game, but doesn't overwrite your save
+  load - restores your place in the narrative
+  save - saves your progress if you're signed in
+  use [item] [on object]- use an item, sometimes on an other item
+  take [item] - add item to your inventory
 `);
               for (let i = 0; i < text.length; i += 1) {
                 setTimeout(() => {
                   runCommand(`edit-line ${text.slice(0, i + 1)}`);
                 }, 100 * i);
               }
-            } 
+            }
           }}
 
 
@@ -142,7 +134,7 @@ signup - create your account
  
 Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands to play as a quick-witted tailor and navigate a series of puzzles. 
   
-To get started use the command "new game", or "login" to restore your save. If you get stuck, use the command "help" to see a list of available commands'
+To get started use the command "new-game". To restore your save use the command "login" along with your username and password. If you get stuck, use the command "help" to see a list of available commands'
         />
         {/* </PlayerContext.Provider> */}
       </div>

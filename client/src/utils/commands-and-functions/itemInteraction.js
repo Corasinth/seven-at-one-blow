@@ -20,9 +20,7 @@
             dialogue = deliverScript(story, item, chapter, stage, inInventory, optionalTargetItem)
             console.log('What dialogue returns: ', dialogue)
             if (dialogue){
-                console.log('We are calling player updater now', player)
                 player = playerObjUpdater(args[0], args[1], story, player)
-                console.log('and after the player looks like this', player)
                 return [dialogue, player]
              } else {
                 return ['You cannot use that here.']
