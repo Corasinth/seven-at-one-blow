@@ -1,166 +1,124 @@
 [
-    {
-        "name":"jam",
-        "relevantStages":[
-            ["0", "0"]
-        ],
-        "scriptCoordinates":[
-            ["0", "1"]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    },
-    {
-        "name":"needle",
-        "relevantStages":[
-            ["0", "1", "cloth"],
-            ["0", "3", "cloth"],
-            ["0", "4"],
-            ["0", "5"]
-        ],
-        "scriptCoordinates":[
-            ["0", "2"],
-            ["0", "4"],
-            ["0", "7"],
-            ["0", "7"]
-        ],
-        "requiredInInventoryStages":[
-            ["4", "0", "king"]
-        ],
-        "inventoryScriptCoordinates":[
-            ["4", "1"]
-        ]
-    },
-    {
-        "name":"cloth",
-        "relevantStages":[
-            ["0", "2", "flies"]
-        ],
-        "scriptCoordinates":[
-            ["0", "3"]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    },
-    {
-        "name":"cheese",
-        "relevantStages":[
-            ["0", "4"],
-            ["0", "5"]
-        ],
-        "scriptCoordinates":[
-            ["0", "5"],
-            ["0", "5"]
-        ],
-        "requiredInInventoryStages":[
-            ["1", "1"]
-        ],
-        "inventoryScriptCoordinates":[
-            ["1", "2"]
-        ]
-    },
-    {
-        "name":"bird",
-        "relevantStages":[
-            ["0", "4"],
-            ["0", "5"]
-        ],
-        "scriptCoordinates":[
-            ["0", "6"],
-            ["0", "6"]
-        ],
-        "requiredInInventoryStages":[
-            ["1", "2"]
-        ],
-        "inventoryScriptCoordinates":[
-            ["1", "3"]
-        ]
-    },
-    {
-        "name":"belt",
-        "relevantStages":[
-            ["1", "0"]
-        ],
-        "scriptCoordinates":[
-            ["1", "1"]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    },
-    {
-        "name":"floor",
-        "relevantStages":[
-            ["1", "3"]
-        ],
-        "scriptCoordinates":[
-            ["1", "4"]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    },
-    {
-        "name":"bed",
-        "relevantStages":[
-            ["1", "3"]
-        ],
-        "scriptCoordinates":[
-            ["1", "5"]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    },
-    {
-        "name":"sword",
-        "relevantStages":[
-            ["2", "1", "giants"],
-            ["2", "6", "giants"]
-        ],
-        "scriptCoordinates":[
-            ["2", "8"],
-            ["2", "7"]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    },
-    {
-        "name":"bones",
-        "relevantStages":[
-            ["2", "1", "giant"],
-            ["2", "2", "giant"],
-            ["2", "3", "giant"],
-            ["2", "4", "giant"],
-            ["2", "5", "giant"]
-        ],
-        "scriptCoordinates":[
-            ["2", "2"],
-            ["2", "3"],
-            ["2", "4"],
-            ["2", "5"],
-            ["2", "6"]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    },
-    {
-        "name":"tree",
-        "relevantStages":[
-            ["3", "0"]
-        ],
-        "scriptCoordinates":[
-            ["3", "1"]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    },
-    {
-        "name":"rope",
-        "relevantStages":[
-            ["3", "1", "unicorn"]
-        ],
-        "scriptCoordinates":[
-            ["3", "2"]
-        ],
-        "requiredInInventoryStages":[],
-        "inventoryScriptCoordinates":[]
-    }
+  {
+    "name": "jam",
+    "relevantStages": [["0", "0"]],
+    "scriptCoordinates": [["0", "1"]],
+    "requiredInInventoryStages": [],
+    "inventoryScriptCoordinates": []
+  },
+  {
+    "name": "needle",
+    "relevantStages": [
+      ["0", "1", "cloth"],
+      ["0", "3", "cloth"],
+      ["0", "4"],
+      ["0", "5"]
+    ],
+    "scriptCoordinates": [
+      ["0", "2"],
+      ["0", "4"],
+      ["0", "7"],
+      ["0", "7"]
+    ],
+    "requiredInInventoryStages": [["4", "0", "king"]],
+    "inventoryScriptCoordinates": [["4", "1"]]
+  },
+  {
+    "name": "cloth",
+    "relevantStages": [["0", "2", "flies"]],
+    "scriptCoordinates": [["0", "3"]],
+    "requiredInInventoryStages": [],
+    "inventoryScriptCoordinates": []
+  },
+  {
+    "name": "cheese",
+    "relevantStages": [
+      ["0", "4"],
+      ["0", "5"]
+    ],
+    "scriptCoordinates": [
+      ["0", "5"],
+      ["0", "5"]
+    ],
+    "requiredInInventoryStages": [["1", "1"]],
+    "inventoryScriptCoordinates": [["1", "2"]]
+  },
+  {
+    "name": "bird",
+    "relevantStages": [
+      ["0", "4"],
+      ["0", "5"]
+    ],
+    "scriptCoordinates": [
+      ["0", "6"],
+      ["0", "6"]
+    ],
+    "requiredInInventoryStages": [["1", "2"]],
+    "inventoryScriptCoordinates": [["1", "3"]]
+  },
+  {
+    "name": "belt",
+    "relevantStages": [["1", "0"]],
+    "scriptCoordinates": [["1", "1"]],
+    "requiredInInventoryStages": [],
+    "inventoryScriptCoordinates": []
+  },
+  {
+    "name": "floor",
+    "relevantStages": [["1", "3"]],
+    "scriptCoordinates": [["1", "4"]],
+    "requiredInInventoryStages": [],
+    "inventoryScriptCoordinates": []
+  },
+  {
+    "name": "bed",
+    "relevantStages": [["1", "3"]],
+    "scriptCoordinates": [["1", "5"]],
+    "requiredInInventoryStages": [],
+    "inventoryScriptCoordinates": []
+  },
+  {
+    "name": "sword",
+    "relevantStages": [
+      ["2", "0", "giants"],
+      ["2", "1", "giants"],
+      ["2", "4", "giants"]
+    ],
+    "scriptCoordinates": [
+      ["2", "6"],
+      ["2", "6"],
+      ["2", "5"]
+    ],
+    "requiredInInventoryStages": [],
+    "inventoryScriptCoordinates": []
+  },
+  {
+    "name": "bones",
+    "relevantStages": [["2", "0"]],
+    "scriptCoordinates": [["2", "1"]],
+    "requiredInInventoryStages": [
+      ["2", "1", "giant"],
+      ["2", "2", "giant"],
+      ["2", "3", "giant"]
+    ],
+    "inventoryScriptCoordinates": [
+      ["2", "2"],
+      ["2", "3"],
+      ["2", "4"]
+    ]
+  },
+  {
+    "name": "tree",
+    "relevantStages": [["3", "0"]],
+    "scriptCoordinates": [["3", "1"]],
+    "requiredInInventoryStages": [],
+    "inventoryScriptCoordinates": []
+  },
+  {
+    "name": "rope",
+    "relevantStages": [["3", "1", "unicorn"]],
+    "scriptCoordinates": [["3", "2"]],
+    "requiredInInventoryStages": [],
+    "inventoryScriptCoordinates": []
+  }
 ]

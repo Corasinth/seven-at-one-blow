@@ -48,16 +48,20 @@ class TermPackage extends Component {
               print(response[0]);
               if (response[1]) {
                 this.setState({ player: response[1] })
+                commands.generateChapter(this.state, print, false)
               }
-              commands.generateChapter(this.state, print, false)
+            console.log('current position', this.state.player.storySave)
+            console.log('%c ==================== SPACER ====================', 'color:orange;font-weight:900');
             },
             'use': (args, print, runCommand) => {
               let response = commands.itemInteraction(args, this.state)
               print(response[0]);
               if (response[1]) {
                 this.setState({ player: response[1] })
+                commands.generateChapter(this.state, print, false)
               }
-              commands.generateChapter(this.state, print, false)
+            console.log('current position', this.state.player.storySave)
+            console.log('%c ==================== SPACER ====================', 'color:orange;font-weight:900');
             },
             'signup': (args, print, runCommand) => {
               let username = args[1];
@@ -98,26 +102,39 @@ class TermPackage extends Component {
                 print(err["response"]["errors"][0]["message"])
               })
             },
-            'save': (args, print, runCommand) => { print(save(this.state)) },
+            'save': (args, print, runCommand) => { 
+              if(!this.state.player.username) {
+                return ['Please log in or sign up before trying to play the game!']
+              }
+              print(commands.save(this.state)) 
+            },
             'load': (args, print, runCommand) => {
-              request(ENDPOINT, LOAD_SAVE, { username: this.state.player.username }).then((response)=>{
+              if(!this.state.player.username) {
+                return ['Please log in or sign up before trying to play the game!']
+              }
+              request(ENDPOINT, LOAD_SAVE, { username: this.state.player.username }).then((response) => {
                 this.setState({ player: response });
                 commands.generateChapter(this.state, print, true);
-              }).catch((err)=>{
+              }).catch((err) => {
                 console.log(err);
                 print("That data can't be loaded");
               })
             },
             'new-game': (args, print, runCommand) => {
-              let state = this.state;
-              state.player.storySave = [0, 0];
-              this.setState(state)
-              commands.generateChapter(this.state, print, false);
+              if(!this.state.player.username) {
+                return ['Please log in or sign up before trying to play the game!']
+              }
+                let state = this.state;
+                state.player.storySave = [0, 0];
+                this.setState(state)
+                commands.generateChapter(this.state, print, true);
             },
             // this prints text the text to the terminal
             'help': (args, print, runCommand) => {
               const text = args.slice(1).join(' ');
               print(`
+  clear - clear the terminal of all text (to see where you are in the story again, try the load command)
+  show - display the opening text
   signup - create your account with this command followed by your desired username and password
   login - login and restore your save with this command followed by your username and password
   new-game - starts a new game, but doesn't overwrite your save

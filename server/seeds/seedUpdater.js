@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path')
-const filePath = path.join(__dirname, './test.json');
+const filePath = path.join(__dirname, './item.json');
 
 //If you want to run this editor as a script (and have the resulting json file auto format) paste this into your console with the appropriate arguments filled out: 
-//'npm run itemEditor --ch=<your chapter number> --pi=<your insertion/deletion point> --iod=<increment of decrement, depending on whether you added or deleted text>
-// "editItemSeed": "node server/seeds/seedUpdater.js && npx prettier --write server/seeds/test.json"
+//'npm run-script itemEditor --chapt=<your chapter number> --pi=<your insertion/deletion point> --iod=<increment of decrement, depending on whether you added or deleted text>
 const editedChapter = parseInt(process.env.npm_config_chapt);
 const indexOfEditedText = parseInt(process.env.npm_config_pi);
 const addedOrDeleted = process.env.npm_config_iod;
@@ -35,8 +34,8 @@ async function itemSeedEditor (chapter, pivotStage, incrementOrDecrement) {
             }
             
             for (let coordinate of item[key]) {
-                if (coordinate[0] === chapter) {
-                    coordinate[1] = editor(coordinate[1]);
+                if (parseInt(coordinate[0]) === chapter) {
+                    coordinate[1] = editor(coordinate[1]).toString();
                 }
             }
         }
