@@ -3,7 +3,7 @@ import Terminal from 'terminal-in-react';
 import ENDPOINT from './utils/queryEndpoint';
 import { request } from 'graphql-request';
 import { STORY_INFO } from './utils/queries'
-import { NEW_PLAYER, LOGIN } from './utils/mutations';
+import { NEW_PLAYER, LOGIN, LOAD_SAVE } from './utils/mutations';
 import commands from './utils/commands-and-functions/index'
 
 // import Auth from '../auth';
@@ -44,16 +44,20 @@ class TermPackage extends Component {
           commands={{
             // user commands
             'take': (args, print, runCommand) => {
-              let response = itemInteraction(args, this.state, this.setState)
+              let response = commands.itemInteraction(args, this.state)
               print(response[0]);
-              this.setState({ player: response[1] })
-              commands.generateChapter(this.state, false)
+              if (response[1]) {
+                this.setState({ player: response[1] })
+              }
+              commands.generateChapter(this.state, print, false)
             },
             'use': (args, print, runCommand) => {
-              let response = itemInteraction(args, this.state)
+              let response = commands.itemInteraction(args, this.state)
               print(response[0]);
-              this.setState({ player: response[1] })
-              commands.generateChapter(this.state, false)
+              if (response[1]) {
+                this.setState({ player: response[1] })
+              }
+              commands.generateChapter(this.state, print, false)
             },
             'signup': (args, print, runCommand) => {
               let username = args[1];
@@ -79,13 +83,16 @@ class TermPackage extends Component {
                 return;
               }
               request(ENDPOINT, LOGIN, { username, password }).then((response) => {
-                console.log(response)
-                this.setState({ player: response.login.player });
+                this.setState({
+                  player:
+                  {
+                    inventory: response.login.player.inventory,
+                    username: response.login.player.username,
+                    storySave: response.login.player.storySave
+                  }
+                })
                 const welcomeStr = `Welcome ${response.login.player.username}!`;
                 print(welcomeStr);
-                setTimeout(()=>{
-                  commands.generateChapter(this.state, print, true)
-                }, 2000)
               }).catch((err) => {
                 console.log(err)
                 print(err["response"]["errors"][0]["message"])
@@ -93,12 +100,18 @@ class TermPackage extends Component {
             },
             'save': (args, print, runCommand) => { print(save(this.state)) },
             'load': (args, print, runCommand) => {
-              this.setState({ player: commands.load(this.state.player) })
-              commands.generateChapter(this.state, print, true)
+              request(ENDPOINT, LOAD_SAVE, { username: this.state.player.username }).then((response)=>{
+                this.setState({ player: response });
+                commands.generateChapter(this.state, print, true);
+              }).catch((err)=>{
+                console.log(err);
+                print("That data can't be loaded");
+              })
             },
             'new-game': (args, print, runCommand) => {
-              this.setState({ player: { storySave: [0, 0] } })
-              runCommand('clear')
+              let state = this.state;
+              state.player.storySave = [0, 0];
+              this.setState(state)
               commands.generateChapter(this.state, print, false);
             },
             // this prints text the text to the terminal

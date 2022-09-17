@@ -2,7 +2,7 @@
     const story = state.story;
     const items = state.items; 
     let player = state.player;
-    
+    console.log('this is the state item interaction gets: ', state)
     if (!player.storySave) {
         return ['Please log in or sign up before trying to play the game!']
     }
@@ -18,9 +18,9 @@
     for (let item of items){
         if (item.name === args[1]) {
             dialogue = deliverScript(story, item, chapter, stage, inInventory, optionalTargetItem)
-            console.log('What dialogue returns: ', dialogue)
             if (dialogue){
                 player = playerObjUpdater(args[0], args[1], story, player)
+                console.log('what we are returning', player)
                 return [dialogue, player]
              } else {
                 return ['You cannot use that here.']
@@ -32,23 +32,19 @@
 
  function playerObjUpdater(interactParam, objName, story, player){
     const playerArr = player.storySave
-    console.log ('at start', player)
     if (interactParam === 'take') {
         player.inventory.push(objName);
     }
     
     if (!(objName === 'needle') || !(interactParam === 'take')) {
-        console.log('arr before', playerArr)
         player.storySave = [playerArr[0], playerArr[1] + 1]    
-        console.log('arr after', playerArr)
     }
     
     if (player.storySave[1] === story.chapters[player.storySave[0]].numberOfStages) {
         const playerChapt = player.storySave
         player.storySave = [playerChapt[0] + 1, 0]
-        // add a function to deploy a new chapter
     }
-    console.log ('at end', player)
+    console.log(player)
     return player 
  }
 
