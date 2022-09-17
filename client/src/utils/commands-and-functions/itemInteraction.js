@@ -2,7 +2,6 @@ function itemInteraction(initialArgs, state) {
     const story = state.story;
     const items = state.items;
     let player = state.player;
-    console.log('this is the state item interaction gets: ', state)
     if (!player.storySave) {
         return ['Please log in or sign up before trying to play the game!']
     }
