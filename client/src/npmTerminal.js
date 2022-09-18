@@ -14,6 +14,7 @@ class TermPackage extends Component {
     story: {}
   }
 
+  //Grabs story info on page load for continuous refrence to allow limited offline usage and limit server requests
   componentDidMount() {
     request(ENDPOINT, STORY_INFO).then((data) => {
       this.setState({ items: data.getStoryInfo.items, story: data.getStoryInfo.story });
@@ -42,7 +43,7 @@ class TermPackage extends Component {
           style={{ fontWeight: "bold", fontSize: "1em" }}
           commands={{
             // user commands
-            'take': (args, print, runCommand) => {
+            'take': (args, print) => {
               let response = commands.itemInteraction(args, this.state)
               print(response[0]);
               if (response[1]) {
@@ -50,7 +51,7 @@ class TermPackage extends Component {
                 commands.generateChapter(this.state, print, false)
               }
             },
-            'use': (args, print, runCommand) => {
+            'use': (args, print) => {
               let response = commands.itemInteraction(args, this.state)
               print(response[0]);
               if (response[1]) {
@@ -58,16 +59,19 @@ class TermPackage extends Component {
                 commands.generateChapter(this.state, print, false)
               }
             },
-            'signup': (args, print, runCommand) => {
+            'signup': (args, print) => {
               let username = args[1];
               let password = args[2];
+              //Prevents errors from pre login commands
               if (!username || !password) {
                 print('Please enter both a username and password');
                 return;
               }
               request(ENDPOINT, NEW_PLAYER, { username, password }).then((response) => {
-                this.setState(response.newPlayer.player)
+                this.setState({player:response.newPlayer.player})
+                console.log(this.state)
                 const welcomeStr = `Welcome ${response.newPlayer.player.username}!`;
+                //JWT currently causing problems, so currently not implemented
                 // if (Auth.getToken()) {
                 //   Auth.logout()
                 // }
@@ -78,7 +82,7 @@ class TermPackage extends Component {
                 print(err["response"]["errors"][0]["message"])
               })
             },
-            'login': (args, print, runCommand) => {
+            'login': (args, print) => {
               let username = args[1];
               let password = args[2];
               if (!username || !password) {
@@ -91,7 +95,6 @@ class TermPackage extends Component {
                   {
                     inventory: response.login.player.inventory,
                     username: response.login.player.username,
-                    storySave: response.login.player.storySave
                   }
                 })
                 const welcomeStr = `Welcome ${response.login.player.username}!`;
@@ -105,13 +108,13 @@ class TermPackage extends Component {
                 print(err["response"]["errors"][0]["message"])
               })
             },
-            'save': (args, print, runCommand) => { 
+            'save': (args, print) => { 
               if(!this.state.player.username) {
                 return ['Please log in or sign up before trying to play the game!']
               }
               print(commands.save(this.state, print)) 
             },
-            'load': (args, print, runCommand) => {
+            'load': (args, print) => {
               if(!this.state.player.username) {
                 return ['Please log in or sign up before trying to play the game!']
               }
@@ -123,7 +126,7 @@ class TermPackage extends Component {
                 print(err["response"]["errors"][0]["message"])
               })
             },
-            'new-game': (args, print, runCommand) => {
+            'new-game': (args, print) => {
               if(!this.state.player.username) {
                 return ['Please log in or sign up before trying to play the game!']
               }

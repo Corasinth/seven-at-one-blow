@@ -15,12 +15,9 @@ const resolvers = {
     Mutation: {
         newPlayer: async (parent, args) => {
             const playerData = await Player.findOne({username:args.username})
-            console.log('Hello???')
             if (!playerData) {
-                console.log('No existing user by that name')
                 const player = await Player.create(args);
                 const token = signToken(player);
-                console.log('STORY SAVE', player.storySave);
                 return {token, player};
             }
             return new AuthenticationError('That username is taken!')
@@ -42,7 +39,6 @@ const resolvers = {
         savePlayer: async (parent, {username, storySave, inventory}, context) => {
             // if (context.user) {
                 const player = await Player.findOne({ username });
-                // const player = playerData[0]
                 player.storySave = storySave;
                 player.inventory = inventory;
                 await player.save();

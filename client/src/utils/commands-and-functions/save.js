@@ -4,7 +4,7 @@ import { request } from 'graphql-request';
 
 function save(state, print) {
     let player = state.player;
-    request(ENDPOINT, SAVE_PLAYER, { username: player.username, storySave: player.storySave, inventory: player.inventory }).then((response) => {
+    request(ENDPOINT, SAVE_PLAYER, { username: player.username, storySave: player.storySave, inventory: player.inventory }).then(() => {
         print('Game Saved')
     }).catch((err) => {
         console.log(err)

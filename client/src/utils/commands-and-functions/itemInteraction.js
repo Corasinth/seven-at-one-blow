@@ -4,10 +4,11 @@ function itemInteraction(initialArgs, state) {
     let player = state.player;
     if (player === {} || !player.inventory) {
         return ['Please log in or sign up before trying to play the game!']
-    } else if (!player.storySave) {
+    } else if (player.storySave[0] === undefined) {
         return ['Please start a new game or load your previous save!']
     }
 
+    //Makes items and item targets case insensitive
     const args = initialArgs.map((arg) => arg.toLowerCase());
 
     const chapter = player.storySave[0]
