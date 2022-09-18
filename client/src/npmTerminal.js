@@ -40,6 +40,7 @@ class TermPackage extends Component {
           backgroundColor='black'
           barColor='black'
           player='TEST STRING'
+          commandPassThrough={cmd => `Command '${cmd}' not found. Press help to see list of available commands.`}
           style={{ fontWeight: "bold", fontSize: "1em" }}
           commands={{
             // user commands
@@ -134,6 +135,9 @@ class TermPackage extends Component {
                 state.player.storySave = [0, 0];
                 this.setState(state)
                 commands.generateChapter(this.state, print, true);
+            },
+            'color': (args, print) => {
+              console.log (this)
             },
             // this prints text the text to the terminal
             'help': (args, print, runCommand) => {
