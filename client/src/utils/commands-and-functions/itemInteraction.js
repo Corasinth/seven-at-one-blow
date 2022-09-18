@@ -56,7 +56,6 @@ function playerObjUpdater(interactParam, objName, story, player) {
 
 function deliverScript(story, item, chapter, stage, inInventory, optionalTargetItem) {
     //Check the relevant stages matrix on the item object for any matches, and set the script coordinates to the returned position if there is a match 
-    console.log(item.name)
     let regularPosition = checker(item.relevantStages, chapter, stage, optionalTargetItem);
     let coordinates = item.scriptCoordinates[regularPosition];
     let finalString
@@ -75,23 +74,11 @@ function deliverScript(story, item, chapter, stage, inInventory, optionalTargetI
 function checker(matrixToCheck, chapter, stage, optionalTargetItem) {
     let position
     //Checks the incoming current chapter and stage against the item's relevantStages
-    console.log(matrixToCheck)
-    console.log(chapter, stage)
     for (let i = 0; i < matrixToCheck.length; i++) {
         //If a match is found, checks if there's something this item needs to be used on, and if so makes sure that item has also been passed in 
-        console.log('hello?')
-        console.log(matrixToCheck[i]);
-        console.log(typeof matrixToCheck[i][1],matrixToCheck[i][1])
-        console.log(typeof stage, stage)
-        console.log(matrixToCheck[i][1]==stage)
-        console.log(matrixToCheck[i][1]==stage.toString())
-        console.log(parseInt(matrixToCheck[i][1])==stage)
         if (matrixToCheck[i][0] == chapter && matrixToCheck[i][1] == stage) {
-            console.log('inside matcher')
             if (matrixToCheck[i][2]) {
-            console.log('inside optional item detector')
                 if (matrixToCheck[i][2] === optionalTargetItem) {
-            console.log('inside optional item checker')
                     position = i;
                     break;
                 } else {

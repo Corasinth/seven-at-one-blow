@@ -40,22 +40,23 @@ const resolvers = {
         },
 
         savePlayer: async (parent, {username, storySave, inventory}, context) => {
-            if (context.user) {
-                const player = await Player.find({ username });
+            // if (context.user) {
+                const player = await Player.findOne({ username });
+                // const player = playerData[0]
                 player.storySave = storySave;
                 player.inventory = inventory;
                 await player.save();
-                return { player }
-            }
-            throw new AuthenticationError('Please log in to save your game');
+                return player
+            // }
+            // throw new AuthenticationError('Please log in to save your game');
         },
 
         loadSave: async (parent, {username}, context) => {
-            if (context.user) {
-                const player = await Player.find({ username });
-                return { player }
-            }
-            throw new AuthenticationError('Please log in to load your save.');
+            // if (context.user) {
+                const player = await Player.findOne({ username });
+                return player
+            // }
+            // throw new AuthenticationError('Please log in to load your save.');
         }
     }
 };

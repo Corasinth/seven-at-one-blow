@@ -2,14 +2,13 @@ import ENDPOINT from '../queryEndpoint';
 import { SAVE_PLAYER } from '../mutations';
 import { request } from 'graphql-request';
 
-function save(state) {
+function save(state, print) {
     let player = state.player;
     request(ENDPOINT, SAVE_PLAYER, { username: player.username, storySave: player.storySave, inventory: player.inventory }).then((response) => {
-        console.log(response)
-        return 'Game Saved'
+        print('Game Saved')
     }).catch((err) => {
         console.log(err)
-        return 'Unable to Save'
+        print(err["response"]["errors"][0]["message"])
     })
 };
 

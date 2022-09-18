@@ -5,8 +5,7 @@ import { request } from 'graphql-request';
 import { STORY_INFO } from './utils/queries'
 import { NEW_PLAYER, LOGIN, LOAD_SAVE } from './utils/mutations';
 import commands from './utils/commands-and-functions/index'
-
-// import Auth from '../auth';
+import Auth from './utils/auth';
 
 class TermPackage extends Component {
   state = {
@@ -50,8 +49,6 @@ class TermPackage extends Component {
                 this.setState({ player: response[1] })
                 commands.generateChapter(this.state, print, false)
               }
-            console.log('current position', this.state.player.storySave)
-            console.log('%c ==================== SPACER ====================', 'color:orange;font-weight:900');
             },
             'use': (args, print, runCommand) => {
               let response = commands.itemInteraction(args, this.state)
@@ -60,8 +57,6 @@ class TermPackage extends Component {
                 this.setState({ player: response[1] })
                 commands.generateChapter(this.state, print, false)
               }
-            console.log('current position', this.state.player.storySave)
-            console.log('%c ==================== SPACER ====================', 'color:orange;font-weight:900');
             },
             'signup': (args, print, runCommand) => {
               let username = args[1];
@@ -73,6 +68,10 @@ class TermPackage extends Component {
               request(ENDPOINT, NEW_PLAYER, { username, password }).then((response) => {
                 this.setState(response.newPlayer.player)
                 const welcomeStr = `Welcome ${response.newPlayer.player.username}!`;
+                // if (Auth.getToken()) {
+                //   Auth.logout()
+                // }
+                // Auth.login(response.login.token)
                 print(welcomeStr);
               }).catch((err) => {
                 console.log(err)
@@ -96,6 +95,10 @@ class TermPackage extends Component {
                   }
                 })
                 const welcomeStr = `Welcome ${response.login.player.username}!`;
+                // if (Auth.getToken()) {
+                //   Auth.logout()
+                // }
+                // Auth.login(response.login.token)
                 print(welcomeStr);
               }).catch((err) => {
                 console.log(err)
@@ -106,18 +109,18 @@ class TermPackage extends Component {
               if(!this.state.player.username) {
                 return ['Please log in or sign up before trying to play the game!']
               }
-              print(commands.save(this.state)) 
+              print(commands.save(this.state, print)) 
             },
             'load': (args, print, runCommand) => {
               if(!this.state.player.username) {
                 return ['Please log in or sign up before trying to play the game!']
               }
               request(ENDPOINT, LOAD_SAVE, { username: this.state.player.username }).then((response) => {
-                this.setState({ player: response });
+                this.setState({ player: response.loadSave })
                 commands.generateChapter(this.state, print, true);
               }).catch((err) => {
                 console.log(err);
-                print("That data can't be loaded");
+                print(err["response"]["errors"][0]["message"])
               })
             },
             'new-game': (args, print, runCommand) => {
