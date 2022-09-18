@@ -35,12 +35,15 @@ There's also a secret ending if you can find it!
 Developed around the terminal-in-react package, Seven at One Blow boasts many features including custom commands, easy contribution, and interactive storytelling. 
 Here's some of the commands that you can use within our terminal.
 ```
-new-game - starts a new game
-login - restores your save
-save - saves your progress
-signup - create your account
-clear - clears the terminal
-show - displays the starting message
+clear: 'clear the terminal of all text (to see where you are in the story again, try the load command)',
+show: 'display the opening text',
+signup: 'create your account with this command followed by your desired username and password',
+login: 'login and restore your save with this command followed by your username and password',
+newgame: "starts a new game, but doesn't overwrite your save",
+load: 'restores your place in the narrative',
+save: "saves your progress if you're signed in",
+use: 'use an [item], sometimes on an other [item]',
+take: 'add an item to your inventory',
 ```
 
 ## Contributing

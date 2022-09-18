@@ -69,7 +69,7 @@ class TermPackage extends Component {
                 return;
               }
               request(ENDPOINT, NEW_PLAYER, { username, password }).then((response) => {
-                this.setState({player:response.newPlayer.player})
+                this.setState({ player: response.newPlayer.player })
                 console.log(this.state)
                 const welcomeStr = `Welcome ${response.newPlayer.player.username}!`;
                 //JWT currently causing problems, so currently not implemented
@@ -109,14 +109,14 @@ class TermPackage extends Component {
                 print(err["response"]["errors"][0]["message"])
               })
             },
-            'save': (args, print) => { 
-              if(!this.state.player.username) {
+            'save': (args, print) => {
+              if (!this.state.player.username) {
                 return ['Please log in or sign up before trying to play the game!']
               }
-              print(commands.save(this.state, print)) 
+              print(commands.save(this.state, print))
             },
             'load': (args, print) => {
-              if(!this.state.player.username) {
+              if (!this.state.player.username) {
                 return ['Please log in or sign up before trying to play the game!']
               }
               request(ENDPOINT, LOAD_SAVE, { username: this.state.player.username }).then((response) => {
@@ -127,40 +127,59 @@ class TermPackage extends Component {
                 print(err["response"]["errors"][0]["message"])
               })
             },
-            'new-game': (args, print) => {
-              if(!this.state.player.username) {
+            'newgame': (args, print) => {
+              if (!this.state.player.username) {
                 return ['Please log in or sign up before trying to play the game!']
               }
-                let state = this.state;
-                state.player.storySave = [0, 0];
-                this.setState(state)
-                commands.generateChapter(this.state, print, true);
+              let state = this.state;
+              state.player.storySave = [0, 0];
+              this.setState(state)
+              commands.generateChapter(this.state, print, true);
             },
-            'color': (args, print) => {
-              console.log (this)
+            color: {
+              method: (args, print, runCommand) => {
+                print(`The color is ${args._[0] || args.color}`);
+              },
+              options: [
+                {
+                  name: 'color',
+                  description: 'The color the output should be',
+                  defaultValue: 'color',
+                },
+              ],
             },
-            // this prints text the text to the terminal
-            'help': (args, print, runCommand) => {
-              const text = args.slice(1).join(' ');
-              print(`
-  clear - clear the terminal of all text (to see where you are in the story again, try the load command)
-  show - display the opening text
-  signup - create your account with this command followed by your desired username and password
-  login - login and restore your save with this command followed by your username and password
-  new-game - starts a new game, but doesn't overwrite your save
-  load - restores your place in the narrative
-  save - saves your progress if you're signed in
-  use [item] [on object]- use an item, sometimes on an other item
-  take [item] - add item to your inventory
-`);
-              for (let i = 0; i < text.length; i += 1) {
-                setTimeout(() => {
-                  runCommand(`edit-line ${text.slice(0, i + 1)}`);
-                }, 100 * i);
-              }
-            }
+            // In theory this is supposed to create a typing effect, however, there are some bugs here. Should they be worked out, all text should be displayed in this fashion, probably with a seperate utility function
+            //             'help': (args, print, runCommand) => {
+            //               print(`
+            //   clear - clear the terminal of all text (to see where you are in the story again, try the load command)
+            //   show - display the opening text
+            //   signup - create your account with this command followed by your desired username and password
+            //   login - login and restore your save with this command followed by your username and password
+            //   new-game - starts a new game, but doesn't overwrite your save
+            //   load - restores your place in the narrative
+            //   save - saves your progress if you're signed in
+            //   use [item] [on object]- use an item, sometimes on an other item
+            //   take [item] - add item to your inventory
+            // `);
+            //               // for (let i = 0; i < text.length; i += 1) {
+            //               //   setTimeout(() => {
+            //               //     runCommand(`edit-line ${text.slice(0, i)}`);
+            //               //   }, 100);
+            //               // }
+            //             }
+          }
+          }
+          descriptions={{
+            clear: 'clear the terminal of all text (to see where you are in the story again, try the load command)',
+            show: 'display the opening text',
+            signup: 'create your account with this command followed by your desired username and password',
+            login: 'login and restore your save with this command followed by your username and password',
+            newgame: "starts a new game, but doesn't overwrite your save",
+            load: 'restores your place in the narrative',
+            save: "saves your progress if you're signed in",
+            use: 'use an [item], sometimes on an other [item]',
+            take: 'add an item to your inventory',
           }}
-
 
           // message that appears when you start the terminal, can also be called on with the "show" command
           msg=' 
@@ -174,7 +193,7 @@ class TermPackage extends Component {
  
 Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands to play as a quick-witted tailor and navigate a series of puzzles. 
   
-To get started use the command "new-game". To restore your save use the command "login" along with your username and password. If you get stuck, use the command "help" to see a list of available commands'
+To get started use the command "newgame". To restore your save use the command "login" along with your username and password. If you get stuck, use the command "help" to see a list of available commands'
         />
         {/* </PlayerContext.Provider> */}
       </div>
