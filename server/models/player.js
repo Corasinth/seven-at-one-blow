@@ -14,7 +14,6 @@ const playerSchema = new Schema({
     },
     storySave: {
         type: [Number],
-        default: [0,0]
     },
     inventory: {
         type: [String],

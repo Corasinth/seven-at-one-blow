@@ -16,10 +16,8 @@ const resolvers = {
         newPlayer: async (parent, args) => {
             const playerData = await Player.findOne({username:args.username})
             if (!playerData) {
-                console.log('No existing user by that name')
                 const player = await Player.create(args);
                 const token = signToken(player);
-                console.log('STORY SAVE', player.storySave);
                 return {token, player};
             }
             return new AuthenticationError('That username is taken!')
@@ -39,22 +37,22 @@ const resolvers = {
         },
 
         savePlayer: async (parent, {username, storySave, inventory}, context) => {
-            if (context.user) {
-                const player = await Player.find({ username });
+            // if (context.user) {
+                const player = await Player.findOne({ username });
                 player.storySave = storySave;
                 player.inventory = inventory;
                 await player.save();
-                return { player }
-            }
-            throw new AuthenticationError('Please log in to save your game');
+                return player
+            // }
+            // throw new AuthenticationError('Please log in to save your game');
         },
 
         loadSave: async (parent, {username}, context) => {
-            if (context.user) {
-                const player = await Player.find({ username });
-                return { player }
-            }
-            throw new AuthenticationError('Please log in to load your save.');
+            // if (context.user) {
+                const player = await Player.findOne({ username });
+                return player
+            // }
+            // throw new AuthenticationError('Please log in to load your save.');
         }
     }
 };

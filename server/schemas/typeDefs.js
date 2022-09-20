@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
     type Player {
-        _id: ID!
+        _id: ID
         username: String
         password: String
         storySave: [Int] 

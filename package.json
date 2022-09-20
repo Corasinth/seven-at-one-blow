@@ -9,7 +9,7 @@
         "install": "cd server && npm i && cd ../client && npm i",
         "seed": "cd server && npm run seed",
         "build": "cd client && npm run build",
-        "itemEditor": "node server/seeds/seedUpdater.js && npx prettier --write server/seeds/test.json"
+        "itemEditor": "node server/seeds/seedUpdater.js && npx prettier --write server/seeds/item.json && npx prettier --write server/seeds/story.json"
     },
     "keywords": [],
     "author": "",

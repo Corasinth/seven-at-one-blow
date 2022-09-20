@@ -1,16 +1,11 @@
-import React, { Component, createContext, useContext } from 'react';
+import React, { Component } from 'react';
 import Terminal from 'terminal-in-react';
-import itemInteraction from './utils/userCommands/itemInteractionCmd';
-import newPlayer from './utils/userCommands/newPlayerCmd';
-import login from './utils/userCommands/loginCmd';
-import newGame from './utils/userCommands/newGameCmd';
-
-
-import { STORY_INFO } from './utils/queries';
-import { request } from 'graphql-request'
 import ENDPOINT from './utils/queryEndpoint';
-import { LOAD_SAVE, LOGIN, NEW_PLAYER, SAVE_PLAYER } from './utils/mutations';
-import Auth from './utils/auth'
+import { request } from 'graphql-request';
+import { STORY_INFO } from './utils/queries'
+import { NEW_PLAYER, LOGIN, LOAD_SAVE } from './utils/mutations';
+import commands from './utils/commands-and-functions/index'
+import Auth from './utils/auth';
 
 class TermPackage extends Component {
   state = {
@@ -18,49 +13,12 @@ class TermPackage extends Component {
     items: [],
     story: {}
   }
+
+  //Grabs story info on page load for continuous refrence to allow limited offline usage and limit server requests
   componentDidMount() {
     request(ENDPOINT, STORY_INFO).then((data) => {
       this.setState({ items: data.getStoryInfo.items, story: data.getStoryInfo.story });
     })
-  }
-  newPlayerRequest = (args) => {
-      request(ENDPOINT, NEW_PLAYER, { username:args[1], password:args[2] }).then((response) => {
-        // Auth.login(response.newPlayer.player.token);
-        this.setState({ player: response.newPlayer.player });
-        console.log(this.state)
-        return `Welcome ${this.state.player.username}!`
-      }).catch((err)=>{
-        console.log(err)
-        return false
-      })
-  }
-  loginRequest = (username, password) => {
-    request(ENDPOINT, LOGIN, {username, password}).then((response) => {
-      console.log(response)
-      this.setState({ player: response.login.player });
-      console.log(this.state)
-    }).catch((err)=>{
-        console.log(err)
-        return false
-      })
-  }
-  saveRequest = () => {
-    let player = this.state.player;
-    request(ENDPOINT, SAVE_PLAYER, {username: player.username, storySave: player.storySave, inventory: player.inventory }).then((response) => {
-      console.log(response)
-    }).catch((err)=>{
-        console.log(err)
-        return false
-      })
-  }
-  loadSaveRequest = () => {
-    request(ENDPOINT, LOAD_SAVE, {username: this.state.player.username}).then((response) => {
-      console.log(response)
-      return (this.state)
-    }).catch((err)=>{
-        console.log(err)
-        return false
-      })
   }
 
   render() {
@@ -82,53 +40,146 @@ class TermPackage extends Component {
           backgroundColor='black'
           barColor='black'
           player='TEST STRING'
+          commandPassThrough={cmd => `Command '${cmd}' not found. Press help to see list of available commands.`}
           style={{ fontWeight: "bold", fontSize: "1em" }}
           commands={{
             // user commands
-            'take': (args, print, runCommand) => { 
-              let returnArr = itemInteraction(args, this.state)
-              if (returnArr[1]){
-                this.state.player = returnArr[1];
+            'take': (args, print) => {
+              let response = commands.itemInteraction(args, this.state)
+              print(response[0]);
+              if (response[1]) {
+                this.setState({ player: response[1] })
+                commands.generateChapter(this.state, print, false)
               }
-              print (returnArr[0]);
             },
-            'use': (args, print, runCommand) => { 
-              let returnArr = itemInteraction(args, this.state)
-              if (returnArr[1]){
-                this.state.player = returnArr[1];
+            'use': (args, print) => {
+              let response = commands.itemInteraction(args, this.state)
+              print(response[0]);
+              if (response[1]) {
+                this.setState({ player: response[1] })
+                commands.generateChapter(this.state, print, false)
               }
-              print (returnArr[0]);
             },
-            'signup': (args, print, runCommand) => { 
-              print(this.newPlayerRequest(args))
+            'signup': (args, print) => {
+              let username = args[1];
+              let password = args[2];
+              //Prevents errors from pre login commands
+              if (!username || !password) {
+                print('Please enter both a username and password');
+                return;
+              }
+              request(ENDPOINT, NEW_PLAYER, { username, password }).then((response) => {
+                this.setState({ player: response.newPlayer.player })
+                console.log(this.state)
+                const welcomeStr = `Welcome ${response.newPlayer.player.username}!`;
+                //JWT currently causing problems, so currently not implemented
+                // if (Auth.getToken()) {
+                //   Auth.logout()
+                // }
+                // Auth.login(response.login.token)
+                print(welcomeStr);
+              }).catch((err) => {
+                console.log(err)
+                print(err["response"]["errors"][0]["message"])
+              })
             },
-            'login': (args, print, runCommand) => { print(login(args, this.loginRequest)) },
-            'save': (args, print, runCommand) => { print(this.saveRequest()) },
-            'load': (args, print, runCommand) => { 
-              let state = this.loadSaveRequest()
-              //Call a function here to print out the correct text based on the current state.player.storySave etc. 
+            'login': (args, print) => {
+              let username = args[1];
+              let password = args[2];
+              if (!username || !password) {
+                print('Please enter both a username and password');
+                return;
+              }
+              request(ENDPOINT, LOGIN, { username, password }).then((response) => {
+                this.setState({
+                  player:
+                  {
+                    inventory: response.login.player.inventory,
+                    username: response.login.player.username,
+                  }
+                })
+                const welcomeStr = `Welcome ${response.login.player.username}!`;
+                // if (Auth.getToken()) {
+                //   Auth.logout()
+                // }
+                // Auth.login(response.login.token)
+                print(welcomeStr);
+              }).catch((err) => {
+                console.log(err)
+                print(err["response"]["errors"][0]["message"])
+              })
+            },
+            'save': (args, print) => {
+              if (!this.state.player.username) {
+                return ['Please log in or sign up before trying to play the game!']
+              }
+              print(commands.save(this.state, print))
+            },
+            'load': (args, print) => {
+              if (!this.state.player.username) {
+                return ['Please log in or sign up before trying to play the game!']
+              }
+              request(ENDPOINT, LOAD_SAVE, { username: this.state.player.username }).then((response) => {
+                this.setState({ player: response.loadSave })
+                commands.generateChapter(this.state, print, true);
+              }).catch((err) => {
+                console.log(err);
+                print(err["response"]["errors"][0]["message"])
+              })
+            },
+            'newgame': (args, print) => {
+              if (!this.state.player.username) {
+                return ['Please log in or sign up before trying to play the game!']
+              }
+              let state = this.state;
+              state.player.storySave = [0, 0];
+              this.setState(state)
+              commands.generateChapter(this.state, print, true);
+            },
+            color: {
+              method: (args, print, runCommand) => {
+                print(`The color is ${args._[0] || args.color}`);
               },
-            'new-game': (args, print, runCommand) => {
-              print(newGame(args, runCommand, this.state))
-              runCommand('clear')              
+              options: [
+                {
+                  name: 'color',
+                  description: 'The color the output should be',
+                  defaultValue: 'color',
+                },
+              ],
             },
-            // this prints text the text to the terminal
-            'help': (args, print, runCommand) => {
-              const text = args.slice(1).join(' ');
-              print(`
-new-game - starts a new game
-login - restores your save
-save - saves your progress
-signup - create your account
-`);
-              for (let i = 0; i < text.length; i += 1) {
-                setTimeout(() => {
-                  runCommand(`edit-line ${text.slice(0, i + 1)}`);
-                }, 100 * i);
-              }
-            } 
+            // In theory this is supposed to create a typing effect, however, there are some bugs here. Should they be worked out, all text should be displayed in this fashion, probably with a seperate utility function
+            //             'help': (args, print, runCommand) => {
+            //               print(`
+            //   clear - clear the terminal of all text (to see where you are in the story again, try the load command)
+            //   show - display the opening text
+            //   signup - create your account with this command followed by your desired username and password
+            //   login - login and restore your save with this command followed by your username and password
+            //   new-game - starts a new game, but doesn't overwrite your save
+            //   load - restores your place in the narrative
+            //   save - saves your progress if you're signed in
+            //   use [item] [on object]- use an item, sometimes on an other item
+            //   take [item] - add item to your inventory
+            // `);
+            //               // for (let i = 0; i < text.length; i += 1) {
+            //               //   setTimeout(() => {
+            //               //     runCommand(`edit-line ${text.slice(0, i)}`);
+            //               //   }, 100);
+            //               // }
+            //             }
+          }
+          }
+          descriptions={{
+            clear: 'clear the terminal of all text (to see where you are in the story again, try the load command)',
+            show: 'display the opening text',
+            signup: 'create your account with this command followed by your desired username and password',
+            login: 'login and restore your save with this command followed by your username and password',
+            newgame: "starts a new game, but doesn't overwrite your save",
+            load: 'restores your place in the narrative',
+            save: "saves your progress if you're signed in",
+            use: 'use an [item], sometimes on an other [item]',
+            take: 'add an item to your inventory',
           }}
-
 
           // message that appears when you start the terminal, can also be called on with the "show" command
           msg=' 
@@ -142,7 +193,7 @@ signup - create your account
  
 Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands to play as a quick-witted tailor and navigate a series of puzzles. 
   
-To get started use the command "new game", or "login" to restore your save. If you get stuck, use the command "help" to see a list of available commands'
+To get started use the command "newgame". To restore your save use the command "login" along with your username and password. If you get stuck, use the command "help" to see a list of available commands'
         />
         {/* </PlayerContext.Provider> */}
       </div>
