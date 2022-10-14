@@ -182,7 +182,7 @@ class TermPackage extends Component {
           }}
 
           // message that appears when you start the terminal, can also be called on with the "show" command
-          msg=' 
+          msg="
 ╔═══╗────────────╔═══╗╔╗───────────╔╗─╔╗
 ║╔═╗║────────────║╔═╗╠╝╚╗──────────║║─║║
 ║╚══╦══╦╗╔╦══╦═╗─║║─║╠╗╔╝╔══╦═╗╔══╗║╚═╣║╔══╦╗╔╗╔╗
@@ -193,7 +193,9 @@ class TermPackage extends Component {
  
 Welcome to SEVEN AT ONE BLOW, an interactive text adventure game! Use commands to play as a quick-witted tailor and navigate a series of puzzles. 
   
-To get started use the command "newgame". To restore your save use the command "login" along with your username and password. If you get stuck, use the command "help" to see a list of available commands'
+To get started use the command 'newgame'. To restore your save use the command 'login' along with your username and password (just like 'login <username> <password>'), or the command 'signup' in a similar way if you don't have an account. 
+
+If you get stuck, use the command 'help' to see a list of available commands"
         />
         {/* </PlayerContext.Provider> */}
       </div>
